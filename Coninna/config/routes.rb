@@ -62,36 +62,4 @@ Rails.application.routes.draw do
   #   end
 end
 
-post '/users/:id', to: 'users#create'
-delete '/users/:id', to: 'users#destroy'
-patch '/users/:id', to: 'users#update'
-
-post '/projects/:id', to: 'projects#create'
-delete '/projects/:id', to: 'projects#destroy'
-patch '/projects/:id', to: 'projects#update'
-get '/projects/:id', to: 'projects#show', as: 'projects'
-
-post '/wishlists/:id', to: 'wishlists#create'
-delete '/wishlists/:id', to: 'wishlists#destroy'
-patch '/wishlists/:id', to: 'wishlists#update'
-get '/wishlists/:id', to: 'wishlists#show', as: 'wishlists'
-
-post '/user_profiles/:username', to: 'user_profiles#create'
-delete '/user_profiles/:username', to: 'user_profiles#destroy'
-patch '/user_profiles/:username', to: 'user_profiles#update'
-get '/user_profiles/:username', to: 'user_profiles#show', as: 'user_profiles'
-
-post '/admins/:id', to: 'admins#create'
-delete '/admins/:id', to: 'admins#destroy'
-patch '/admins/:id', to: 'admins#update'
-
-post '/guests/:id', to: 'guests#create'
-delete '/guests/:id', to: 'guests#destroy'
-patch '/guests/:id', to: 'guests#update'
-
-post '/promises/:id', to: 'promises#create'
-delete '/promises/:id', to: 'promises#destroy'
-patch '/promises/:id', to: 'promises#update'
-get '/promises/:id', to: 'promises#show', as: 'promises'
-
 
