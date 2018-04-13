@@ -17,7 +17,7 @@ class WishlistsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create wishlist" do
     assert_difference('Wishlist.count') do
-      post wishlists_url, params: { wishlist: { id: @wishlist.id, reference: @wishlist.reference } }
+      post wishlists_url, params: { wishlist: { project_id: @wishlist.project_id } }
     end
 
     assert_redirected_to wishlist_url(Wishlist.last)
@@ -34,7 +34,7 @@ class WishlistsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update wishlist" do
-    patch wishlist_url(@wishlist), params: { wishlist: { id: @wishlist.id, reference: @wishlist.reference } }
+    patch wishlist_url(@wishlist), params: { wishlist: { project_id: @wishlist.project_id } }
     assert_redirected_to wishlist_url(@wishlist)
   end
 

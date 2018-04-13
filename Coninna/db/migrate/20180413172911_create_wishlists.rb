@@ -1,8 +1,7 @@
 class CreateWishlists < ActiveRecord::Migration[5.0]
   def change
     create_table :wishlists do |t|
-      t.integer :id, primary_key :true
-      t.project :reference
+      t.references :project, foreign_key: true
 
       t.timestamps
     end

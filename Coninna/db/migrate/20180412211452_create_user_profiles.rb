@@ -2,7 +2,7 @@ class CreateUserProfiles < ActiveRecord::Migration[5.0]
   def change
     create_table :user_profiles do |t|
       t.string :name
-      t.string :user_name, primary_key :true
+      t.string :user_name
       t.integer :phone
       t.string :mail
       t.string :role

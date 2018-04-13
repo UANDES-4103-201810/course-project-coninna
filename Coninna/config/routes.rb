@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
+  resources :wishlists
   resources :guests
   resources :admins
   resources :user_profiles
   resources :users
-  resources :wishlists
   resources :promises
   resources :projects
+
+  get 'coninna' => 'application#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

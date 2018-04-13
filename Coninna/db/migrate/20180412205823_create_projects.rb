@@ -7,8 +7,7 @@ class CreateProjects < ActiveRecord::Migration[5.0]
       t.integer :goal_amount
       t.string :title
       t.string :descriptive_page
-      t.integer :id, primary_key :true
-      t.reference :user, foreign_key :true
+      t.references :user, foreign_key: true
       t.integer :actual_money
 
       t.timestamps

@@ -1,7 +1,7 @@
 class CreateAdmins < ActiveRecord::Migration[5.0]
   def change
     create_table :admins do |t|
-      t.reference :user_profile, foreign_key :true
+      t.references :user_profile, foreign_key: true
 
       t.timestamps
     end

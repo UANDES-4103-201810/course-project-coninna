@@ -5,8 +5,7 @@
 <table>
   <thead>
     <tr>
-      <th>Id</th>
-      <th>Reference</th>
+      <th>Project</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -14,8 +13,7 @@
   <tbody>
     <% @wishlists.each do |wishlist| %>
       <tr>
-        <td><%= wishlist.id %></td>
-        <td><%= wishlist.reference %></td>
+        <td><%= wishlist.project %></td>
         <td><%= link_to 'Show', wishlist %></td>
         <td><%= link_to 'Edit', edit_wishlist_path(wishlist) %></td>
         <td><%= link_to 'Destroy', wishlist, method: :delete, data: { confirm: 'Are you sure?' } %></td>
