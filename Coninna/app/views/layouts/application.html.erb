@@ -7,7 +7,29 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+<header class="navbar navbar-fixed-to navbar-inverse">
+  <div class="container">
+    <nav>
+      <li>
+        <% if current_user %>
+          <li><%= link_to 'My profile', user_profile_path %></li>
+        <% end %>
+        <% if is_user_logged_in?%>
+          <li><%= link_to 'Wishlist', wishlist_path(:id => @wishlist.id)%></li>
+          <li><%= link_to 'My profile', user_profile_path %></li>
+          <li><%= link_to 'My projects', projects_path %></li>
+          <li><%= link_to 'Logout', destroy_user_session_path%></li>
+        <% else %>
+          <%= link_to 'Login', new_user_session_path %>
+          <%= link_to 'Sign Up', new_user_regitration_path%>
+        <% end %>
+        <%= link_to 'Home', root_path %>
+        <%= link_to 'Projects', projects_path %>
+        <%= link_to 'Login', new_user_session_path %>
+      </ul>
+    </nav>
+  </div>
+</header>
 <div style="width:1000px; height:100px; background-color:lightpink">
   <h1 style="font-size:70px">Coninna Crowdfunding</h1>
 </div>
