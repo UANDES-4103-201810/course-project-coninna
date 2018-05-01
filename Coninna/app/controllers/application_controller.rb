@@ -22,8 +22,7 @@ class ApplicationController < ActionController::Base
       logged_in = false
         if logged_in
           then true
-        else
-          redirect_to guests_path
+
         end
 
   end
@@ -33,8 +32,6 @@ class ApplicationController < ActionController::Base
     logged_in = false
     if logged_in
     then true
-    else
-      redirect_to guests_path
     end
 
   end
