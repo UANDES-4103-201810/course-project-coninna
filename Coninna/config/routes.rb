@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   resources :users
   resources :promises
   resources :projects
-	
+  get 'show_my', to: 'projects#show_my'
   
 
   root  'application#index'

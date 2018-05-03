@@ -41,9 +41,9 @@
     	  <ul class="navbar-nav">
 	    <% if user_signed_in? %>
             <%= link_to 'Projects |', projects_path %>
-          	<%= link_to 'Wishlist |', wishlist_path:@wishlist %>
+          	<%= link_to 'Wishlist |', wishlists_path %>
           	<%= link_to 'My profile |', current_user %>
-          	<%= link_to 'My projects |', project_path:@project %>
+          	<%= link_to 'My projects |', show_my_path %>
           	
       	    <%else%>
         	<%= link_to 'Projects', projects_path %>

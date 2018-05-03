@@ -14,6 +14,10 @@ class ProjectsController < ApplicationController
     	render json: @project
   end
 
+  def show_my
+    @projects = current_user.projects
+  end
+
   # GET /projects/new
   def new
     @project = Project.new
