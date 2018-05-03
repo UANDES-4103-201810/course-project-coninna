@@ -7,7 +7,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<header class="navbar navbar-default">
+<!--<header class="navbar navbar-default">
   <div class="container">
     <nav>
       <ul>
@@ -25,8 +25,40 @@
       </ul>
     </nav>
   </div>
+</header>-->
+<header>
+   <nav class="navbar navbar-expand-md bg-dark navbar-dark fixed-top">
+  	<!-- Brand -->
+  	<a class="navbar-brand" href="/">Coninna</a>
+
+  	<!-- Toggler/collapsibe Button -->
+  	<button class="navbar-toggler" type="button" data-toggle="collapse" data target="#collapsibleNavbar">
+    		<span class="navbar-toggler-icon"></span>
+  	</button>
+
+  	<!-- Navbar links -->
+  	<div class="collapse navbar-collapse" id="collapsibleNavbar">
+    	  <ul class="navbar-nav">
+      	    <li class="nav-item">
+        	<a class="nav-link" href="/projects">Projects</a>
+      	    </li>
+      	    
+    	  </ul>
+	  <ul class="navbar-nav ml-auto">
+	   <li class="nav-item">
+        	<a class="nav-link" href="/users/sign_in">Sign In</a>
+      	    </li>
+     	    <li class="nav-item">
+        	<a class="nav-link" href="/users/sign_up">Sign Up</a>
+      	    </li>
+	  </ul>
+  </div>
+</nav> 
 </header>
-<div style="width:1000px; height:100px; background-color:lightpink">
+<div style="width:100; height:100; background-color:white">
+	<h1> **</h1>
+</div>
+<div  style="width:100; height:100; background-color:lightpink">
   <h1 style="font-size:70px; text-align:center">Coninna Crowdfunding</h1>
 </div>
 <% if notice %>
