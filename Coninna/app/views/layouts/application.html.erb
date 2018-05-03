@@ -39,24 +39,32 @@
   	<!-- Navbar links -->
   	<div class="collapse navbar-collapse" id="collapsibleNavbar">
     	  <ul class="navbar-nav">
-	    <% if user_signed_in? %>
-            <%= link_to 'Projects |', projects_path %>
-          	<%= link_to 'Wishlist |', wishlists_path %>
-          	<%= link_to 'My profile |', current_user %>
-          	<%= link_to 'My projects |', show_my_path %>
-          	
-      	    <%else%>
-        	<%= link_to 'Projects', projects_path %>
-	   <% end %>
+          <% if user_signed_in? && user_profile.role=="admin"%>
+            <%= link_to '| Projects |', projects_path %>
+            <%= link_to 'My profile |', current_user %>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Options</a>
+             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink"> </div>
+            </li>
+            <% end %>
+          <% if user_signed_in? %>
+              <%= link_to '| Projects |', projects_path %>
+              <%= link_to 'Wishlist |', wishlists_path %>
+              <%= link_to 'My profile |', current_user %>
+              <%= link_to 'My projects |', show_my_path %>
+
+              <%else%>
+            <%= link_to '| Projects |', projects_path %>
+          <% end %>
       	    
       	    
     	  </ul>
-	  <ul class="navbar-nav ml-auto">
+	  <ul class="navbar-nav ml-auto>
 	   <% if user_signed_in? %>
 		 <%= link_to 'Log Out', destroy_user_session_path, :method => :delete %>
 	   <%else%>
-        	 <%= link_to 'Log In|   ', new_user_session_path %>
-          	 <%= link_to 'Sign Up', new_user_registration_path %>
+        	 <%= link_to '| Log In |   ', new_user_session_path %>
+          	 <%= link_to 'Sign Up |', new_user_registration_path %>
            <% end %>
 	  </ul>
   </div>
