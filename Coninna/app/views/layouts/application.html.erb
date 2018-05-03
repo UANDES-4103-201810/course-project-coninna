@@ -40,9 +40,10 @@
   	<div class="collapse navbar-collapse" id="collapsibleNavbar">
     	  <ul class="navbar-nav">
 	    <% if user_signed_in? %>
-          	<%= link_to 'Wishlist', wishlist_path:@wishlist %>
-          	<%= link_to 'My profile', current_user %>
-          	<%= link_to 'My projects', project_path:@project %>
+            <%= link_to 'Projects |', projects_path %>
+          	<%= link_to 'Wishlist |', wishlist_path:@wishlist %>
+          	<%= link_to 'My profile |', current_user %>
+          	<%= link_to 'My projects |', project_path:@project %>
           	
       	    <%else%>
         	<%= link_to 'Projects', projects_path %>
