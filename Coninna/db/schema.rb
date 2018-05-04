@@ -12,27 +12,15 @@
 
 ActiveRecord::Schema.define(version: 20180430180416) do
 
-  create_table "admins", force: :cascade do |t|
-    t.integer  "user_profile_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-    t.index ["user_profile_id"], name: "index_admins_on_user_profile_id"
-  end
-
-  create_table "guests", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "projects", force: :cascade do |t|
+    t.string   "title"
     t.string   "category"
     t.text     "description"
     t.integer  "days_to_go"
     t.integer  "goal_amount"
-    t.string   "title"
+    t.integer  "actual_money"
     t.string   "descriptive_page"
     t.integer  "user_id"
-    t.integer  "actual_money"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
     t.index ["user_id"], name: "index_projects_on_user_id"
@@ -47,6 +35,8 @@ ActiveRecord::Schema.define(version: 20180430180416) do
   end
 
   create_table "user_profiles", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "admin_id"
     t.string   "name"
     t.string   "user_name"
     t.integer  "phone"
@@ -60,10 +50,11 @@ ActiveRecord::Schema.define(version: 20180430180416) do
     t.datetime "last_access"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
+    t.index ["admin_id"], name: "index_user_profiles_on_admin_id"
+    t.index ["user_id"], name: "index_user_profiles_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
-    t.integer  "user_profile_id"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
     t.string   "email",                  default: "", null: false
@@ -78,14 +69,15 @@ ActiveRecord::Schema.define(version: 20180430180416) do
     t.string   "last_sign_in_ip"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-    t.index ["user_profile_id"], name: "index_users_on_user_profile_id"
   end
 
   create_table "wishlists", force: :cascade do |t|
     t.integer  "project_id"
+    t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["project_id"], name: "index_wishlists_on_project_id"
+    t.index ["user_id"], name: "index_wishlists_on_user_id"
   end
 
 end

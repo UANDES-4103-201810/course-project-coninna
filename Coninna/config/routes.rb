@@ -1,9 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
   resources :wishlists
-  resources :guests
-  resources :admins
-  resources :user_profiles
   resources :users
   resources :promises
   resources :projects
