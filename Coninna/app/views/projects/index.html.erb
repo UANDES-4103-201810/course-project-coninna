@@ -1,6 +1,7 @@
 <p id="notice"><%= notice %></p>
-
-<h1>Projects</h1>
+<div  style="width:100; height:100; background-color:lightpink; padding-top: 0px">
+  <h1 style="font-size:50px; text-align:left">Projects</h1>
+</div>
 <% if user_signed_in?%>
   <%= link_to 'New Project', new_project_path %>
 <% end %>
@@ -10,27 +11,25 @@
   <tbody>
     <% @projects.each do |project| %>
       <div class="row">
-        <div class="col-sm-4">
-          <%= link_to(image_tag("bosque.png", alt: "forests", height: "380", width: "350"), project)%>
-          <%= %>
+        <div class="col-sm-4" style="padding-left: 35px ;padding-top: 20px">
+          <%= link_to(image_tag("turtle.jpg", alt: "forests", height: "350", width: "350"), project)%>
+          <br>
         </div>
         <div class="col-sm-4" style="padding-top: 40px">
           <h3><%= project.title%></h3>
           <p><%= project.description %></p>
-          <br>
-          <div class="col-sm-4">
+          <div class="col-sm-6">
             <p>Goal: $<%=project.goal_amount %></p>
           </div>
-          <div class="col-sm-4">
+          <div class="col-sm-6">
+            <p>Acual Money: $<%=project.actual_money %></p>
+          </div>
+          <div class="col-sm-6">
             <p>Days to go: <%= project.days_to_go%></p>
           </div>
-        </div>
 
-        <tr>
-          <td><%= link_to 'Show', project %></td>
-          <td><%= link_to 'Edit', edit_project_path(project) %></td>
-          <td><%= link_to 'Destroy', project, method: :delete, data: {confirm: 'Are you sure?'} %></td>
-        </tr>
+          <br>
+        </div>
       </div>
     <% end %>
   </tbody>

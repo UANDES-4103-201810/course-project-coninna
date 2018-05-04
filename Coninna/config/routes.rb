@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :promises
   resources :projects
   get 'show_my', to: 'projects#show_my'
+  get 'show_my_wishlist', to: 'wishlists#show_my_wishlist'
   
 
   root  'application#index'

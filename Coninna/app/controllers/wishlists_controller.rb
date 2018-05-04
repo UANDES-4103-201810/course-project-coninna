@@ -11,6 +11,9 @@ class WishlistsController < ApplicationController
   # GET /wishlists/1.json
   def show
   end
+  def show_my_wishlist
+    @wishlists=Wishlist.where(user_id: current_user.id)
+  end
 
   # GET /wishlists/new
   def new
