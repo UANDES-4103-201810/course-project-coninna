@@ -1,5 +1,6 @@
 class Promise < ApplicationRecord
 	belongs_to :project
+	has_many :funds
 
 	validate :delivery_date_cannot_be_in_the_past
 	def delivery_date_cannot_be_in_the_past

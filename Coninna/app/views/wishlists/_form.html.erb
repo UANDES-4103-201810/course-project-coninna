@@ -1,15 +1,20 @@
-<%= form_for(wishlist) do |f| %>
-  <% if wishlist.errors.any? %>
+<%= form_for(show_my_wishlist) do |f| %>
+  <% if show_my_wishlist.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(wishlist.errors.count, "error") %> prohibited this wishlist from being saved:</h2>
+      <h2><%= pluralize(show_my_wishlist.errors.count, "error") %> prohibited this wishlist from being saved:</h2>
 
       <ul>
-      <% wishlist.errors.full_messages.each do |message| %>
+      <% show_my_wishlist.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
     </div>
   <% end %>
+
+  <div class="field">
+    <%= f.label :user_id %>
+    <%= f.text_field :user_id %>
+  </div>
 
   <div class="field">
     <%= f.label :project_id %>

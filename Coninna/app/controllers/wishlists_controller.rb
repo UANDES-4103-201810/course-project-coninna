@@ -11,9 +11,6 @@ class WishlistsController < ApplicationController
   # GET /wishlists/1.json
   def show
   end
-  def show_my_wishlist
-    @wishlists=Wishlist.where(user_id: current_user.id)
-  end
 
   # GET /wishlists/new
   def new
@@ -72,6 +69,6 @@ class WishlistsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def wishlist_params
-      params.require(:wishlist).permit(:project_id)
+      params.require(:show_my_wishlist).permit(:user_id, :project_id)
     end
 end

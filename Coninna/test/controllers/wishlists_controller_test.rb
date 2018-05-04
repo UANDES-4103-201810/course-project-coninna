@@ -15,15 +15,15 @@ class WishlistsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should create wishlist" do
+  test "should create show_my_wishlist" do
     assert_difference('Wishlist.count') do
-      post wishlists_url, params: { wishlist: { project_id: @wishlist.project_id } }
+      post wishlists_url, params: {show_my_wishlist: {project_id: @wishlist.project_id, user_id: @wishlist.user_id } }
     end
 
     assert_redirected_to wishlist_url(Wishlist.last)
   end
 
-  test "should show wishlist" do
+  test "should show show_my_wishlist" do
     get wishlist_url(@wishlist)
     assert_response :success
   end
@@ -33,12 +33,12 @@ class WishlistsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should update wishlist" do
-    patch wishlist_url(@wishlist), params: { wishlist: { project_id: @wishlist.project_id } }
+  test "should update show_my_wishlist" do
+    patch wishlist_url(@wishlist), params: {show_my_wishlist: {project_id: @wishlist.project_id, user_id: @wishlist.user_id } }
     assert_redirected_to wishlist_url(@wishlist)
   end
 
-  test "should destroy wishlist" do
+  test "should destroy show_my_wishlist" do
     assert_difference('Wishlist.count', -1) do
       delete wishlist_url(@wishlist)
     end

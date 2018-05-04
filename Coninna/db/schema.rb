@@ -10,7 +10,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180430180416) do
+ActiveRecord::Schema.define(version: 20180504163709) do
+
+  create_table "categories", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "category_projects", force: :cascade do |t|
+    t.integer  "category_id"
+    t.integer  "project_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["category_id"], name: "index_category_projects_on_category_id"
+    t.index ["project_id"], name: "index_category_projects_on_project_id"
+  end
+
+  create_table "funds", force: :cascade do |t|
+    t.string   "state"
+    t.integer  "user_id"
+    t.integer  "promise_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["promise_id"], name: "index_funds_on_promise_id"
+    t.index ["user_id"], name: "index_funds_on_user_id"
+  end
 
   create_table "projects", force: :cascade do |t|
     t.string   "title"
@@ -34,9 +59,7 @@ ActiveRecord::Schema.define(version: 20180430180416) do
     t.datetime "updated_at",    null: false
   end
 
-  create_table "user_profiles", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "admin_id"
+  create_table "users", force: :cascade do |t|
     t.string   "name"
     t.string   "user_name"
     t.integer  "phone"
@@ -48,13 +71,6 @@ ActiveRecord::Schema.define(version: 20180430180416) do
     t.string   "password"
     t.text     "address"
     t.datetime "last_access"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
-    t.index ["admin_id"], name: "index_user_profiles_on_admin_id"
-    t.index ["user_id"], name: "index_user_profiles_on_user_id"
-  end
-
-  create_table "users", force: :cascade do |t|
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
     t.string   "email",                  default: "", null: false
@@ -67,13 +83,14 @@ ActiveRecord::Schema.define(version: 20180430180416) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.boolean  "admin"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   create_table "wishlists", force: :cascade do |t|
-    t.integer  "project_id"
     t.integer  "user_id"
+    t.integer  "project_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["project_id"], name: "index_wishlists_on_project_id"

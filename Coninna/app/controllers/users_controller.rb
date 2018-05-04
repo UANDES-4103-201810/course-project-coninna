@@ -13,6 +13,11 @@ class UsersController < ApplicationController
 
   end
 
+  def show_my_wishlist
+    @wishlist = current_user.wishlists
+
+  end
+
   # GET /users/new
   def new
     @user = User.new

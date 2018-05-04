@@ -11,17 +11,32 @@
   </thead>
 
   <tbody>
-    <% @users.each do |user| %>
+  <table>
+
+    <tbody>
+    <% @user.each do |user| %>
+      <div class="row">
+
+        <div class="col-sm-4" style="padding-top: 40px">
+          <h3><%= user.user_name%></h3>
+          <p><%= user.name %></p>
+
+          <br>
+        </div>
+      </div>
+    <% end %>
+    </tbody>
+  </table>
       <tr>
-        <td><%= user.id %></td>
         <td><%= link_to 'Show', user %></td>
         <td><%= link_to 'Edit', edit_user_path(user) %></td>
         <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
-    <% end %>
+
   </tbody>
 </table>
 
 <br>
-
-<%= link_to 'New User', new_user_path %>
+<%if current_user.admin %>
+  <%= link_to 'New User', new_user_path %>
+<% end %>

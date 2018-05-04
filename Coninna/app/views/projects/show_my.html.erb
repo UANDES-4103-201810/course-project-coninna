@@ -9,6 +9,29 @@
 <table>
 
   <tbody>
+  <div class="row">
+    <div class="col-sm-4" style="padding-left: 35px ;padding-top: 20px">
+      <%= link_to(image_tag("turtle.jpg", alt: "turtle", height: "350", width: "350")) %>
+      <br>
+    </div>
+    <div class="col-sm-4" style="padding-top: 40px">
+      <h3>Title: </h3>
+
+      <div class="col-sm-6">
+        <p>Description: </p>
+        <p>Goal: $</p>
+      </div>
+      <div class="col-sm-6">
+        <p>Actual Money: $</p>
+      </div>
+      <div class="col-sm-6">
+        <p>Days to go: </p>
+      </div>
+
+      <br>
+    </div>
+  </div>
+
   <% current_user.projects.each do |project| %>
     <div class="row">
       <div class="col-sm-4" style="padding-left: 35px ;padding-top: 20px">

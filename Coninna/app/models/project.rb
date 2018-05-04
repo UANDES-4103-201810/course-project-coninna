@@ -1,6 +1,12 @@
 class Project < ApplicationRecord
 	has_many :promises
 	belongs_to :user
+	has_many :category_projects
+	has_many :category, :through => :category_projects
+
+	has_many :show_my_wishlist
+
+
 
 	validates :title, :description, :category, :days_to_go, :goal_amount, :actual_money, presence: true
 	validates :goal_amount, numericality: { only_integer: true }
