@@ -7,12 +7,17 @@ class UserProfilesController < ApplicationController
     @user_profiles = UserProfile.all
   end
 
+  def show_my_user_profile
+    @user_profile=UserProfile.find_by_user_id(current_user.id)
+  end
+
   # GET /user_profiles/1
   # GET /user_profiles/1.json
   def show
 	@user_profile = UserProfile.find(params[:id])
     render json: @user_profile
   end
+
 
   # GET /user_profiles/new
   def new

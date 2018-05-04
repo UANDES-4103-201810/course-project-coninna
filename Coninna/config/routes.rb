@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   resources :projects
   get 'show_my', to: 'projects#show_my'
   get 'show_my_wishlist', to: 'wishlists#show_my_wishlist'
-  
+  get 'show_my_user_profile', to: 'user_profiles#show_my_user_profile'
 
   root  'application#index'
   # The priority is based upon order of creation: first created -> highest priority.

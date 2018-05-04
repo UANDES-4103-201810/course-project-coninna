@@ -3,8 +3,8 @@ class UserProfile < ApplicationRecord
 	has_many :admins
 
 	validates :phone, length: { in: 9..12 }
-	validates :phone, numericality: { only_integer: true}
-	validates :password, length: { in 5..12 }
+	validates :phone, numericality: { only_integer: true }
+	validates :password, length: { in: 5..12 }
 	validates :email, format: { with: /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i }
 	validates :username, uniqueness: true
 	validates :username, :name, :email, :password, :credit_card_info, :address, :country, presence: true

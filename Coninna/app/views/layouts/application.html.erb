@@ -42,13 +42,23 @@
 
           <% if user_signed_in? %>
               <%= link_to '| Projects |', projects_path %>
-              <%= link_to 'Wishlist |', wishlists_path %>
+              <%= link_to 'Wishlist |', show_my_wishlist_path %>
               <%= link_to 'My profile |', current_user %>
               <%= link_to 'My projects |', show_my_path %>
 
               <%else%>
             <%= link_to '| Projects |', projects_path %>
           <% end %>
+<!--           <%#if current_user.role == "admin" %>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Options</a>
+            <div class="dropdown-menu">
+              <a><%#= link_to "Statistics"%></a>
+              <a><%#=link to "Users information",user_profiles_path %> </a>
+              <a><%#=link to "Register new user",new_user_registration_path %> </a>
+            </div>
+          </li>
+          <%#end%>-->
       	    
       	    
         </ul>
