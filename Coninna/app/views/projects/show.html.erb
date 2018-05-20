@@ -1,6 +1,9 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <%= image_tag @project.photo.url(:medium) %>
+</p>
+<p>
   <strong>Category:</strong>
   <%= @project.category %>
 </p>
@@ -34,6 +37,7 @@
   <strong>Descriptive page:</strong>
   <%= @project.descriptive_page %>
 </p>
+
 
 <%= link_to 'Edit', edit_project_path(@project) %> |
 <%= link_to 'Back', projects_path %>

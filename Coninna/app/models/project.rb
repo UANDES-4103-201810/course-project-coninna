@@ -6,6 +6,7 @@ class Project < ApplicationRecord
 
 	has_many :show_my_wishlist
 
+	has_attached_file :photo
 
 
 	validates :title, :description, :category, :days_to_go, :goal_amount, :actual_money, presence: true
@@ -15,5 +16,6 @@ class Project < ApplicationRecord
 	validates :actual_money, numericality: { greater_than: 0 }
 	validates :days_to_go, numericality: { only_integer: true }
 	validates :days_to_go, numericality: { greater_than: 0 }
+	validates_attachment_content_type :photo, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
 	
 end

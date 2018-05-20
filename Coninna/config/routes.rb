@@ -2,13 +2,13 @@ Rails.application.routes.draw do
   resources :wishlists
   resources :funds
   resources :categories
-  devise_for :users
+  devise_for :users, :path_prefix => 'd'
   resources :users
   resources :promises
   resources :projects
   get 'show_my', to: 'projects#show_my'
   get 'show_my_wishlist', to: 'user#show_my_wishlist'
-
+  get 'users/:id' => 'users#show'
   root  'application#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
