@@ -7,5 +7,6 @@ class User < ApplicationRecord
 	has_many :founds
 
 	has_many :wishlists
+	validates :name, presence: true
 
 end

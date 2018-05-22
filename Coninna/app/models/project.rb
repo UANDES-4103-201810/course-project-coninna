@@ -2,14 +2,14 @@ class Project < ApplicationRecord
 	has_many :promises
 	belongs_to :user
 	has_many :category_projects
-	has_many :category, :through => :category_projects
+	has_many :categories, :through => :category_projects
 
 	has_many :show_my_wishlist
 
 	has_attached_file :photo
 
 
-	validates :title, :description, :category, :days_to_go, :goal_amount, :actual_money, presence: true
+	validates :title, :description, :days_to_go, :goal_amount, :actual_money, presence: true
 	validates :goal_amount, numericality: { only_integer: true }
 	validates :goal_amount, numericality: { greater_than: 0 }
 	validates :actual_money, numericality: { only_integer: true }

@@ -14,7 +14,7 @@
     <% @projects.each do |project| %>
       <div class="row">
         <div class="col-sm-4" style="padding-left: 35px ;padding-top: 20px">
-          <%= image_tag @project.photo.url(:medium) %>
+          <%= image_tag @project.photo.url(:medium) || "No hay foto" %>
           <br>
         </div>
         <div class="col-sm-4" style="padding-top: 40px">

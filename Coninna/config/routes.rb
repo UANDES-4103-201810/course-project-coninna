@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   resources :wishlists
   resources :funds
   resources :categories
-  devise_for :users, :path_prefix => 'd'
+  devise_for :users, :controllers => {:registrations => "users/registrations"}
   resources :users
   resources :promises
   resources :projects
