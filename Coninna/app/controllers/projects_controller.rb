@@ -27,10 +27,12 @@ class ProjectsController < ApplicationController
   def edit
   end
 
+
   # POST /projects
   # POST /projects.json
   def create
     @project = Project.new(project_params)
+    @project.user_id = current_user.id
 
     respond_to do |format|
       if @project.save
@@ -75,6 +77,6 @@ class ProjectsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def project_params
-      params.require(:project).permit(:description, :days_to_go, :goal_amount, :actual_money, :title, :descriptive_page, category_ids: [])
+      params.require(:project).permit(:description, :days_to_go, :goal_amount, :actual_money, :title, :descriptive_page, :photo, category_ids: [])
     end
 end

@@ -14,11 +14,11 @@
     <% @projects.each do |project| %>
       <div class="row">
         <div class="col-sm-4" style="padding-left: 35px ;padding-top: 20px">
-          <%= image_tag @project.photo.url(:medium) || "No hay foto" %>
+          <%= image_tag project.photo.url(:medium), class: 'img-thumbnail' %>
           <br>
         </div>
         <div class="col-sm-4" style="padding-top: 40px">
-          <h3><%= project.title%></h3>
+          <h3><%= link_to project.title, project %></h3>
           <p><%= project.description %></p>
           <div class="col-sm-6">
             <p>Goal: $<%=project.goal_amount %></p>
@@ -28,6 +28,10 @@
           </div>
           <div class="col-sm-6">
             <p>Days to go: <%= project.days_to_go%></p>
+          </div>
+          <div>
+            <button type="button" class="btn btn-success">Fund</button>
+            <button type="button" class="btn btn-primary">Add to Wishlist</button>
           </div>
 
           <br>

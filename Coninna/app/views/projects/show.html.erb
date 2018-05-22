@@ -1,13 +1,18 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <%= image_tag @project.photo.url(:medium) %>
+  <%= image_tag @project.photo.url(:medium), class: 'img-thumbnail' %>
 </p>
 <p>
   <strong>Category:</strong>
   <% @project.categories.each do |category| %>
     <%= category.name %>
   <% end %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @project.user.name %>
 </p>
 
 <p>
@@ -40,6 +45,13 @@
   <%= @project.descriptive_page %>
 </p>
 
+<% if @project.user == current_user %>
+  <%= link_to 'Edit', edit_project_path(@project) %> |
+<% else %>
+  <div>
+    <button type="button" class="btn btn-success">Fund</button>
+    <button type="button" class="btn btn-primary">Add to Wishlist</button>
+  </div>
+  <% end %>
 
-<%= link_to 'Edit', edit_project_path(@project) %> |
 <%= link_to 'Back', projects_path %>

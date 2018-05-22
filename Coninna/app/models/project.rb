@@ -6,7 +6,7 @@ class Project < ApplicationRecord
 
 	has_many :show_my_wishlist
 
-	has_attached_file :photo
+	has_attached_file :photo, styles: { medium:"300x300>"}
 
 
 	validates :title, :description, :days_to_go, :goal_amount, :actual_money, presence: true
