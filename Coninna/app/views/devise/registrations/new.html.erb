@@ -49,6 +49,12 @@
     <%= f.label :country %><br/>
     <%= f.text_field :country %>
   </div>
+   <% if user_signed_in? && current_user.admin %>
+	  <div class="field">
+	  <%= label_tag :admin %>
+	  <%= radio_button_tag('admin', 'admin') %> Admin
+	</div>
+  <%end%>
 
   <div class="actions">
     <%= f.submit "Sign up" %>

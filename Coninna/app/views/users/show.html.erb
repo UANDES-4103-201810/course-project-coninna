@@ -1,9 +1,14 @@
 <p id="notice"><%= notice %></p>
-<div style="width:100; height:100; background-color:lightpink; padding-top: 0px">
-  <h1 style="font-size:50px; text-align:left">My Profile</h1>
-</div>
+<%if user_signed_in? && current_user.id == @user.id %>
+	<div style="width:100; height:100; background-color:lightpink; padding-top: 0px">
+	  <h1 style="font-size:50px; text-align:left">My Profile</h1>
+	</div>
+<% else %>
+	<div style="width:100; height:100; background-color:lightpink; padding-top: 0px">
+	  <h1 style="font-size:50px; text-align:left">User Profile</h1>
+	</div>
 
-
+<%end%>
 
 <table>
 
@@ -24,11 +29,14 @@
 
 
         <div class="col-sm-6">
-          <% if user_signed_in? %>
+          <% if user_signed_in? && current_user == @user.id %>
             <%= link_to 'Edit', edit_user_registration_path(@user) %>
-
-
-          <% end %>
+	  <% end %>
+	  <% if current_user.admin%>
+  		<%= link_to 'Edit', edit_user_registration_path(@user) %>
+  		<%= link_to 'Destroy', @user, method: :delete, data: {confirm: 'Are you sure?'} %>
+	 
+	  <% end %>
         </div>
         <br>
       </div>

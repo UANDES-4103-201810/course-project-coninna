@@ -2,7 +2,7 @@
 <div  style="width:100; height:100; background-color:lightpink; padding-top: 0px">
   <h1 style="font-size:50px; text-align:left">Projects</h1>
 </div>
-<% if user_signed_in?%>
+<% if user_signed_in? && !current_user.admin %>
   <%= link_to 'New Project', new_project_path %>
 <% end %>
 
@@ -29,11 +29,18 @@
           <div class="col-sm-6">
             <p>Days to go: <%= project.days_to_go%></p>
           </div>
+	  <% if !current_user.admin %>
           <div>
             <button type="button" class="btn btn-success">Fund</button>
             <button type="button" class="btn btn-primary">Add to Wishlist</button>
           </div>
-
+	  
+	  <% end %>
+	  <% if current_user.admin%>
+  		<%= link_to 'Edit', edit_project_path(project) %>
+               <%= link_to 'Destroy', project, method: :delete, data: {confirm: 'Are you sure?'} %>
+	 
+	  <% end %>
           <br>
         </div>
       </div>

@@ -12,6 +12,7 @@
   <% end %>
 
   <div class="field">
+    <%= f.label :categories %>
     <%= f.collection_check_boxes :category_ids, Category.all, :id, :name %>
   </div>
 
@@ -48,6 +49,7 @@
     <%= f.label :photo %>
     <%= f.file_field :photo %>
   </div>
+ 
 
   <div class="actions">
     <%= f.submit %>
