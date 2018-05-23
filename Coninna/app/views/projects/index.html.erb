@@ -29,14 +29,14 @@
           <div class="col-sm-6">
             <p>Days to go: <%= project.days_to_go%></p>
           </div>
-	  <% if !current_user.admin %>
+	  <% if user_signed_in? && !current_user.admin %>
           <div>
             <button type="button" class="btn btn-success">Fund</button>
             <button type="button" class="btn btn-primary">Add to Wishlist</button>
           </div>
 	  
 	  <% end %>
-	  <% if current_user.admin%>
+	  <% if user_signed_in? && current_user.admin%>
   		<%= link_to 'Edit', edit_project_path(project) %>
                <%= link_to 'Destroy', project, method: :delete, data: {confirm: 'Are you sure?'} %>
 	 

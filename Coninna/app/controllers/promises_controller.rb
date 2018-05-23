@@ -11,7 +11,7 @@ class PromisesController < ApplicationController
   # GET /promises/1.json
   def show
 	@promise = Promise.find(params[:id])
-    	render json: @promise
+
   end
 
   # GET /promises/new

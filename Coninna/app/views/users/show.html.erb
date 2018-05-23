@@ -29,14 +29,16 @@
 
 
         <div class="col-sm-6">
-          <% if user_signed_in? && current_user == @user.id %>
+          <% if user_signed_in? && current_user == @user %>
             <%= link_to 'Edit', edit_user_registration_path(@user) %>
-	  <% end %>
-	  <% if current_user.admin%>
-  		<%= link_to 'Edit', edit_user_registration_path(@user) %>
-  		<%= link_to 'Destroy', @user, method: :delete, data: {confirm: 'Are you sure?'} %>
-	 
-	  <% end %>
+          <% end %>
+    <% if user_signed_in? %>
+      <% if current_user.admin%>
+        <%= link_to 'Edit', edit_user_registration_path(@user) %>
+        <%= link_to 'Destroy', @user, method: :delete, data: {confirm: 'Are you sure?'} %>
+
+      <% end %>
+    <% end %>
         </div>
         <br>
       </div>
