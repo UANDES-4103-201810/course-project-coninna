@@ -16,5 +16,12 @@ class Project < ApplicationRecord
 	validates :days_to_go, numericality: { only_integer: true }
 	validates :days_to_go, numericality: { greater_than: 0 }
 	validates_attachment_content_type :photo, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
-	
+  def self.search(search)
+    if search
+      where('title LIKE ?', "%#{search}%")
+    else
+      all
+    end
+  end
+
 end

@@ -3,9 +3,22 @@
   <h1 style="font-size:50px; text-align:left">Projects</h1>
 </div>
 <% if user_signed_in? && !current_user.admin %>
-  <%= link_to 'New Project', new_project_path %>
+  <%= link_to 'New Project', new_project_path , class: "btn"%>
 <% end %>
+<body>
 
+<%= form_tag({:controller => "projects", :action => "index"}, :method => :get) do %>
+
+      <%= text_field_tag "searchbox", params[:searchbox] %>
+
+      <%= submit_tag "Search", :name => nil %>
+
+  <% end %>
+<% @projects.category.each do |category| %>
+
+  <%end%>
+
+</body>
 
 <table>
 
@@ -38,7 +51,7 @@
 	  <% end %>
 	  <% if user_signed_in? && current_user.admin%>
   		<%= link_to 'Edit', edit_project_path(project) %>
-               <%= link_to 'Destroy', project, method: :delete, data: {confirm: 'Are you sure?'} %>
+      <%= link_to 'Destroy', project, method: :delete, data: {confirm: 'Are you sure?'} %>
 	 
 	  <% end %>
           <br>

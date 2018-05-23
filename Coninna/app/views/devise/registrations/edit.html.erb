@@ -32,11 +32,6 @@
   </div>
 
   <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
     <%= f.label :user_name %><br />
     <%= f.text_field :user_name %>
   </div>
@@ -48,7 +43,7 @@
 
   <div class="field">
     <%= f.label :date_of_birth %><br/>
-    <%= f.date_select :dob %>
+    <%= f.date_select :dob, :start_year => 1920, :end_year => 2000 %>
   </div>
 
   <div class="field">
@@ -64,6 +59,11 @@
   <div class="field">
     <%= f.label :country %><br/>
     <%= f.text_field :country %>
+  </div>
+
+  <div class="field" style="color: red">
+    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br/>
+    <%= f.password_field :current_password, autocomplete: "off" %>
   </div>
 
   <div class="actions">

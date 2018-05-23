@@ -3,7 +3,7 @@
   <h1 style="font-size:50px; text-align:left">My Projects</h1>
 </div>
 <% if user_signed_in? %>
-  <%= link_to 'New Project', new_project_path %>
+  <%= link_to 'New Project', new_project_path , class: "btn" %>
 <% end %>
 
 <table>
@@ -31,8 +31,8 @@
         </div>
         <div class="col-sm-6">
           <% if user_signed_in? %>
+            <div><%= link_to "New Promise", new_promise_path(:project => project.id) %> </div>
             <%= link_to 'Edit', edit_project_path(project) %>
-            <button type="button" class="btn btn-danger">Danger</button>
             <%= link_to 'Destroy', project, method: :delete, data: {confirm: 'Are you sure?'} %>
           <% end %>
         </div>

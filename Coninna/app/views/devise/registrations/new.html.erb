@@ -35,7 +35,7 @@
   </div>
   <div class="field">
     <%= f.label :date_of_birth %><br/>
-    <%= f.date_select :dob %>
+    <%= f.date_select :dob, :start_year => 1920, :end_year => 2000 %>
   </div>
   <div class="field">
     <%= f.label :credit_card_info %><br/>

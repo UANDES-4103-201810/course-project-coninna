@@ -4,8 +4,10 @@ class ProjectsController < ApplicationController
   # GET /projects
   # GET /projects.json
   def index
-    @projects = Project.all
-
+    @projects = Project.search(params[:searchbox])
+    respond_to do |format|
+      format.html # index.html.erb
+    end
   end
 
   # GET /projects/1
