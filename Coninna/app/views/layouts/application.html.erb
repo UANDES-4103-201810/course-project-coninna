@@ -51,9 +51,9 @@
 		
 	  <% if user_signed_in? && current_user.admin %>
 	        <%= link_to 'My profile |', current_user %>
-                <%= link_to " Statistics |"%>
+                <%= link_to " Statistics |", statistics_path%>
                 <%=link_to " Users information |",users_path %> 
-		<%= link_to " Pending requests |"%>
+		<%= link_to " Pending requests |", pending_path%>
  
           <% end %>
              

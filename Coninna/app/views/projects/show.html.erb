@@ -41,6 +41,18 @@
   <strong>Descriptive page:</strong>
   <%= @project.descriptive_page %>
 </p>
+<p>
+<% if user_signed_in? %>
+   <% if @project.promises.count ==0 %>
+	<p> * </p>
+	<%else%>
+	  	<strong>Promise:</strong>
+	  		<%= @project.promises.each do |promise|%>
+	  		<%= promise.description %>
+	  	<% end %>
+    <% end %>
+  <% end %>
+</p>
 <% if user_signed_in? %>
   <% if @project.user == current_user || current_user.admin%>
     <%= link_to 'Edit', edit_project_path(@project) %>
@@ -49,10 +61,69 @@
 
   <% else %>
     <div>
-      <button type="button" class="btn btn-success">Fund</button>
-      <button type="button" class="btn btn-primary">Add to Wishlist</button>
+      <input type="number" id="fund_input" class="form-control">
+      <button type="button" class="btn btn-success" id="fund_btn" onclick="Fundsck();" value="<=%@user_id %>">Fund</button>
+      <button type="button" class="btn btn-success" id="buy_btn" onclick="Buy();" value="<=%@user_id %>">Buy Promise</button>
+      <button type="button" class="btn btn-primary" id="wish_btn" onclick="Like();" value="<=%@user_id %>">Add to Wishlist</button>
     </div>
     <% end %>
+<div>
+
+    </div>
+
+
+  <input type="hidden" id="project_id" value="<%= @project.id %>">
+
+  <script type="application/javascript">
+    function Fundsck() {
+      let fund_btn = document.getElementById("fund_btn");
+      let fund_input = document.getElementById("fund_input");
+      let project_input = document.getElementById("project_id");
+      let user_id = fund_btn.value;
+      let fund_amount = fund_input.value;
+      let project_id = project_input.value;
+
+      $.ajax({
+        type: "POST",
+        url: "/funds.json",
+        data: {
+          fund: {
+            status: true,
+            user_id: user_id,
+            project_id: project_id,
+            amount: fund_amount,
+            promise: null,
+            authenticity_token: window._token
+                 }
+        },
+        success: console.log("Fund Posted"),
+        dataType: "json"
+      });
+  }
+  </script>
+  <script type="application/javascript">
+    function Like() {
+      let wish_btn = document.getElementById("wish_btn");
+      let project_input = document.getElementById("project_id");
+      let user_id = wish_btn.value;
+      let project_id = project_input.value;
+
+      $.ajax({
+        type: "POST",
+        url: "/wishlists.json",
+        data: {
+          wishlist: {
+            user_id: user_id,
+            project_id: project_id,
+            authenticity_token: window._token
+          }
+        },
+        success: console.log("Wishlist Posted"),
+        dataType: "json"
+      });
+    }
+  </script>
 <% end %>
 
 <%= link_to 'Back', projects_path %>
+
