@@ -6,16 +6,24 @@
   <%= link_to 'New Project', new_project_path , class: "btn"%>
 <% end %>
 <body>
-
+<div class="row">
+<div class="col-sm-3">
 <%= form_tag({:controller => "projects", :action => "index"}, :method => :get) do %>
 
       <%= text_field_tag "searchbox", params[:searchbox] %>
 
       <%= submit_tag "Search", :name => nil %>
 
-  <% end %>
+  <% end %></div>
+ <div class="col-sm-4">
+   <%= @categories.each do |cat|%>
+	<p><%=link_to "", projects_path%></p>
+	<%end%>
 
+</div>
+</div>
 </body>
+
 
 <table>
 
@@ -40,7 +48,7 @@
             <p>Days to go: <%= project.days_to_go%></p>
           </div>
 	  <div class="progress">
-  		<div class="progress-bar" style="width:<%= (project.actual_money.to_f/project.goal_amount.to_f )*100%>% " role="progressbar" aria-valuenow="<%= (project.actual_money.to_f/project.goal_amount.to_f )*100%>" aria-valuemin="0" aria-valuemax="<%=project.goal_amount%>"></div>
+  		<div class="progress-bar" style="width:<%= (project.actual_money.to_f/project.goal_amount.to_f )*100%>% " role="progressbar" aria-valuenow="<%= (project.actual_money.to_f/project.goal_amount.to_f )*100%>" aria-valuemin="0" aria-valuemax="<%=project.goal_amount%>"><%= (project.actual_money.to_f/project.goal_amount.to_f )*100%>%</div>
 	 </div>
 <br>
 	  <% if user_signed_in? && !current_user.admin %>

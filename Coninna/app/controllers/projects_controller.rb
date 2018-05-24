@@ -4,6 +4,7 @@ class ProjectsController < ApplicationController
   # GET /projects
   # GET /projects.json
   def index
+    @categories = Category.all
     @projects = Project.search(params[:searchbox])
     respond_to do |format|
       format.html # index.html.erb
