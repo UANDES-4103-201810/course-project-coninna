@@ -13,7 +13,6 @@ Rails.application.routes.draw do
   get 'statistics', to: 'users#statistics'
   get 'pending', to: 'projects#pending'
   get 'download', to: 'projects#download_file'
-  get 'newadmin', to: 'registrations#newadmin'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
