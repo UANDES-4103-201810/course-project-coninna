@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-  before_action :set_project, only: [:show, :edit, :update, :destroy]
+  before_action :set_project, only: [:show, :edit, :update, :destroy, :download_file]
 
   # GET /projects
   # GET /projects.json
@@ -29,6 +29,10 @@ class ProjectsController < ApplicationController
 
   # GET /projects/1/edit
   def edit
+  end
+  def download_file
+
+    send_file @project.photo.path
   end
 
 

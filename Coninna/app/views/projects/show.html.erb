@@ -4,8 +4,11 @@
 </div>
 <div class="container-fluid">
 	<p>
-	  <%= image_tag @project.photo.url(:medium), class: 'img-thumbnail' %>
-	</p>
+	  <% if @project.photo.exists? %>
+	    <%= image_tag @project.photo.url(:medium), class:'img-thumbnail' %></p>
+	
+	 <p> <%= link_to "Download Photo", download_path(id:@project) %></p>
+	<%end%>
 	<p>
 	  <strong>Category:</strong>
 	  <% @project.categories.each do |category| %>

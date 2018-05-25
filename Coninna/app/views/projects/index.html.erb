@@ -3,9 +3,14 @@
   <h1 style="font-size:50px; text-align:left">Projects</h1>
 </div>
 <% if user_signed_in? && !current_user.admin %>
-  <%= link_to 'New Project', new_project_path , class: "btn"%>
+  <%= link_to 'New Project', new_project_path , class: "btn btn-dark"%>
 <% end %>
+<% if user_signed_in? && current_user.admin%>
+   <%= link_to 'New category', new_category_path, class: "btn btn-dark" %> 
+<% end %>
+<br>
 <body>
+<br>
 <div class="row">
 <div class="col-sm-3">
 <%= form_tag({:controller => "projects", :action => "index"}, :method => :get) do %>
@@ -15,10 +20,11 @@
       <%= submit_tag "Search", :name => nil %>
 
   <% end %></div>
+<h4> Categories: </h4>
  <div class="col-sm-4">
-   <%= @categories.each do |cat|%>
-	<p><%=link_to "", projects_path%></p>
-	<%end%>
+   <% @categories.each do |cat|%>
+	<%=link_to cat.name, cat %>
+   <%end%>
 
 </div>
 </div>
