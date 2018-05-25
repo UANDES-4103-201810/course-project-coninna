@@ -1,6 +1,8 @@
 <p id="notice"><%= notice %></p>
+<div style="width:100; height:100; background-color:lightpink; padding-top: 0px">
+  <h1 style="font-size:50px; text-align:left">Funded Projects</h1>
+</div>
 
-<h1>Funds</h1>
 
 <table>
   <thead>
@@ -16,8 +18,11 @@
     <% @funds.each do |fund| %>
       <tr>
         <td><%= fund.state %></td>
-        <td><%= fund.user %></td>
+        <td><%= fund.user.name %></td>
         <td><%= fund.promise %></td>
+        <% if fund.promise != nil %>
+         <td><%= fund.promise.project.title %></td>
+        <%end%>
         <td><%= link_to 'Show', fund %></td>
         <td><%= link_to 'Edit', edit_fund_path(fund) %></td>
         <td><%= link_to 'Destroy', fund, method: :delete, data: { confirm: 'Are you sure?' } %></td>

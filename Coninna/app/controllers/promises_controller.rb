@@ -16,6 +16,7 @@ class PromisesController < ApplicationController
 
   # GET /promises/new
   def new
+    @project = params[:project]
     @promise = Promise.new
   end
 
@@ -30,8 +31,8 @@ class PromisesController < ApplicationController
 
     respond_to do |format|
       if @promise.save
-        format.html { redirect_to @promise, notice: 'Promise was successfully created.' }
-        format.json { render :show, status: :created, location: @promise }
+        format.html { redirect_to @promise.project, notice: 'Promise was successfully created.' }
+        format.json { render :show, status: :created, location: @promise}
       else
         format.html { render :new }
         format.json { render json: @promise.errors, status: :unprocessable_entity }
@@ -71,6 +72,6 @@ class PromisesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def promise_params
-      params.require(:promise).permit(:delivery_date, :description, :amount)
+      params.require(:promise).permit(:delivery_date, :description, :amount, :project_id)
     end
 end

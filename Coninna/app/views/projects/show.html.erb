@@ -18,8 +18,43 @@
     <p>
       <strong>Promises:</strong>
       <% @project.promises.each do |promise| %>
-        <%= promise.description %>
+        <div>
+          <p> <strong>Description:</strong> <%= promise.description %>
+              <strong> Amount: $ </strong><%= promise.amount %>
+              <strong> Delivery date: </strong><%= promise.delivery_date %>
+            <% if user_signed_in? && !current_user.admin %>
+            <!-- Trigger/Open The Modal -->
+            <button id="myBtn" data-toggle="modal" data-target="#myModal<%=promise.id %>">Buy</button>
+
+            <!-- The Modal -->
+            <div id="myModal<%=promise.id %>" class="modal">
+
+              <!-- Modal content -->
+              <div class="modal-content">
+                <div class="modal-header">
+                  <span class="close">&times;</span>
+                  <h2>Promise</h2>
+                </div>
+                <div class="modal-body">
+                  <%= form_for Fund.new do |f| %>
+                    <%= f.hidden_field :project_id, :value => @project.id %>
+                    <%= f.hidden_field :user_id, :value => current_user.id %>
+                    <p><strong>Description:</strong> <%= promise.description %>
+                      <strong> Amount: $ </strong><%= promise.amount %>
+                      <strong> Delivery date: </strong><%= promise.delivery_date %></p>
+                    </div>
+                    <div class="modal-footer">
+                      <%= f.submit "Buy", class: "btn btn-primary" %>
+                  <% end %>
+        </div>
+        <div class="modal-footer">
+          <h3></h3>
+        </div>
+        </div>
+
+        </div>
       <% end %>
+      <%end%>
     </p>
 	<p>
 	  <strong>Owner:</strong>

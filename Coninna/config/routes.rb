@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :funds
   resources :categories
   devise_for :users, :controllers => {:registrations => "users/registrations"}
-  resources :users
+  resources :users, path: :people
   resources :promises
   resources :projects
   get 'show_my', to: 'projects#show_my'

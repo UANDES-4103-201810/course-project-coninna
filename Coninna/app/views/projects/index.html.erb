@@ -9,6 +9,9 @@
 
   <%= link_to 'New Category', new_category_path, class: "btn btn-dark" %>
 <% end %>
+<% if user_signed_in? && !current_user.admin %>
+  <%= link_to 'Funded Projects', funds_path , class: "btn btn-dark"%>
+<% end %>
 <br>
 <body><br>
 <div class="row">
@@ -64,7 +67,6 @@
 <br>
 	  <% if user_signed_in? && !current_user.admin %>
           <div>
-            <button type="button" class="btn btn-success">Fund</button>
             <button type="button" class="btn btn-primary">Add to Wishlist</button>
           </div>
 	  
