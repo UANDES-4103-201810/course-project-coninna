@@ -11,7 +11,6 @@
 <% end %>
 <br>
 <body><br>
->>>>>>> cde553d8019ed79a7a6f99b3c7489c4bb92e0877
 <div class="row">
 <div class="col-sm-3">
 <%= form_tag({:controller => "projects", :action => "index"}, :method => :get) do %>
@@ -22,7 +21,6 @@
 
   <% end %></div>
 
-
   <% if user_signed_in? && current_user.admin %>
     <%= link_to 'Categories: ', categories_path %>
   <%else%>
@@ -32,7 +30,6 @@
    <% @categories.each do |cat|%>
      <%=link_to cat.name, cat %>
 	<%end%>
-
 
 </div>
 </div>
