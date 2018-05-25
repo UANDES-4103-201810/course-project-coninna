@@ -15,7 +15,12 @@
 	    <%= category.name %>
 	  <% end %>
 	</p>
-
+    <p>
+      <strong>Promises:</strong>
+      <% @project.promises.each do |promise| %>
+        <%= promise.description %>
+      <% end %>
+    </p>
 	<p>
 	  <strong>Owner:</strong>
 	  <%= link_to @project.user.name , user_path(@project.user)%>
