@@ -55,13 +55,7 @@
   <strong>Descriptive page:</strong>
   <%= @project.descriptive_page %>
 </p>
-<p>
- <strong>Promises:</strong>
-  <% if @project.id == @promise.id %>
-	<%=@promise.description%>
-  <%end%>
-  	
-</p>
+
 
 
 <% if user_signed_in? %>
