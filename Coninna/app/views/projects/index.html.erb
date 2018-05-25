@@ -6,11 +6,18 @@
   <%= link_to 'New Project', new_project_path , class: "btn btn-dark"%>
 <% end %>
 <% if user_signed_in? && current_user.admin%>
+<<<<<<< HEAD
    <%= link_to 'New category', new_category_path, class: "btn btn-dark" %> 
 <% end %>
 <br>
 <body>
 <br>
+=======
+  <%= link_to 'New Category', new_category_path, class: "btn btn-dark" %>
+<% end %>
+<br>
+<body><br>
+>>>>>>> cde553d8019ed79a7a6f99b3c7489c4bb92e0877
 <div class="row">
 <div class="col-sm-3">
 <%= form_tag({:controller => "projects", :action => "index"}, :method => :get) do %>
@@ -20,11 +27,23 @@
       <%= submit_tag "Search", :name => nil %>
 
   <% end %></div>
+<<<<<<< HEAD
 <h4> Categories: </h4>
  <div class="col-sm-4">
    <% @categories.each do |cat|%>
 	<%=link_to cat.name, cat %>
    <%end%>
+=======
+  <% if user_signed_in? && current_user.admin %>
+    <%= link_to 'Categories: ', categories_path %>
+  <%else%>
+    <h4>Categories: </h4>
+    <%end%>
+ <div class="col-sm-4">
+   <% @categories.each do |cat|%>
+     <%=link_to cat.name, cat %>
+	<%end%>
+>>>>>>> cde553d8019ed79a7a6f99b3c7489c4bb92e0877
 
 </div>
 </div>
@@ -54,7 +73,7 @@
             <p>Days to go: <%= project.days_to_go%></p>
           </div>
 	  <div class="progress">
-  		<div class="progress-bar" style="width:<%= (project.actual_money.to_f/project.goal_amount.to_f )*100%>% " role="progressbar" aria-valuenow="<%= (project.actual_money.to_f/project.goal_amount.to_f )*100%>" aria-valuemin="0" aria-valuemax="<%=project.goal_amount%>"><%= (project.actual_money.to_f/project.goal_amount.to_f )*100%>%</div>
+  		<div class="progress-bar" style="width:<%= (project.actual_money.to_f/project.goal_amount.to_f )*100%>% " role="progressbar" aria-valuenow="<%= ((project.actual_money.to_f/project.goal_amount.to_f )*100).to_int %>" aria-valuemin="0" aria-valuemax="<%=project.goal_amount%>"><%= ((project.actual_money.to_f/project.goal_amount.to_f )*100).to_int%>%</div>
 	 </div>
 <br>
 	  <% if user_signed_in? && !current_user.admin %>

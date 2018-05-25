@@ -4,6 +4,7 @@
 </div>
 
 <% @category.projects.each do |project| %>
+<<<<<<< HEAD
 <div class="row">
       <div class="col-sm-4" style="padding-left: 35px ;padding-top: 20px">
         <%= image_tag project.photo.url(:medium), class: 'img-thumbnail' %>
@@ -24,6 +25,28 @@
     </div>
 
 </div>
+=======
+  <div class="row">
+    <div class="col-sm-4" style="padding-left: 35px ;padding-top: 20px">
+      <%= image_tag project.photo.url(:medium), class: 'img-thumbnail' %>
+      <br>
+    </div>
+    <div class="col-sm-4" style="padding-top: 40px">
+      <h3><%= link_to project.title, project %></h3>
+      <p><%= project.description %></p>
+      <div class="col-sm-6">
+        <p>Goal: $<%= project.goal_amount %></p>
+      </div>
+      <div class="col-sm-6">
+        <p>Acual Money: $<%= project.actual_money %></p>
+      </div>
+      <div class="col-sm-6">
+        <p>Days to go: <%= project.days_to_go %></p>
+      </div>
+    </div>
+
+  </div>
+>>>>>>> cde553d8019ed79a7a6f99b3c7489c4bb92e0877
 <% end%>
 
 <%= link_to 'Edit', edit_category_path(@category) %> |
