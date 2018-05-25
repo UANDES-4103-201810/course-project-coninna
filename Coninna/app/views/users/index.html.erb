@@ -38,5 +38,5 @@
 
 <br>
 <%if current_user.admin %>
-  <%= link_to 'New User', newadmin_path %>
+  <%= link_to 'New User', edit_user_path(user)%>
 <% end %>

@@ -13,21 +13,18 @@
 </div>
 <div class="row">
   <% @projects.each do |p| %>
-	<% if p.outstanding %>
-	<div class="col-sm-4">
-	  <% if p.photo.exists? %>
-	    <%= image_tag @project.photo.url(:medium), class:'img-thumbnail' %>
-	  
-	  <strong>Title:</strong>
-	  <%= p.title %>
-	  
-	  <strong>Description:</strong>
-	  <%= p.description %>
-	</div>
-
-	<%end%>	
-	<%end%>	
-   <%end%>
+    <% if p.outstanding %>
+      <div class="col-sm-4">
+        <% if p.photo.exists? %>
+          <%= image_tag p.photo.url(:medium), class:'img-thumbnail' %>
+        <%end%>
+        <strong>Title:</strong>
+        <%= p.title %>
+        <strong>Description:</strong>
+        <%= p.description %>
+      </div>
+    <%end%>
+ <%end%>
 </div>
 </body>
 </html>
