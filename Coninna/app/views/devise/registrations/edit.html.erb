@@ -65,7 +65,12 @@
     <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br/>
     <%= f.password_field :current_password, autocomplete: "off" %>
   </div>
-
+<% if user_signed_in? && current_user.admin %>
+	  <div class="field">
+	  <%= label_tag :admin %>
+	  <%= radio_button_tag('admin', 'admin') %> Admin
+	</div>
+  <%end%>
   <div class="actions">
     <%= f.submit "Update" %>
   </div>

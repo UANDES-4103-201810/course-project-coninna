@@ -14,7 +14,9 @@ class ProjectsController < ApplicationController
   # GET /projects/1
   # GET /projects/1.json
   def show
-	 @project = Project.find(params[:id])
+
+	@project = Project.find(params[:id])
+	@promises = Promise.all
 	
   end
 
@@ -85,6 +87,6 @@ class ProjectsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def project_params
-      params.require(:project).permit(:description, :days_to_go, :goal_amount, :actual_money, :title, :descriptive_page, :photo, category_ids: [])
+      params.require(:project).permit(:description, :days_to_go, :goal_amount, :actual_money, :outstanding, :title, :descriptive_page, :photo, category_ids: [])
     end
 end
