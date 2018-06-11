@@ -37,8 +37,11 @@
                 </div>
                 <div class="modal-body">
                   <%= form_for Fund.new do |f| %>
-                    <%= f.hidden_field :project_id, :value => @project.id %>
                     <%= f.hidden_field :user_id, :value => current_user.id %>
+		    <%= f.hidden_field :promise_id, :value => promise.id %>
+	            <%= f.hidden_field :project_id, :value => @project.id %>
+		    <%= f.hidden_field :amount, :value => nil %>
+
                     <p><strong>Description:</strong> <%= promise.description %>
                       <strong> Amount: $ </strong><%= promise.amount %>
                       <strong> Delivery date: </strong><%= promise.delivery_date %></p>
@@ -102,16 +105,59 @@
   <% else %>
     <div class="row">
     	<div class="col-sm-2">
+	<% if user_signed_in? && !current_user.admin %>
+            <!-- Trigger/Open The Modal -->
+            <button id="myBtn" class= "btn btn-success"data-toggle="modal" data-target="#myModal<%=@project_id %>">Fund with money</button>
+
+            <!-- The Modal -->
+            <div id="myModal<%=@project_id %>" class="modal">
+
+              <!-- Modal content -->
+              <div class="modal-content">
+                <div class="modal-header">
+                  <span class="close">&times;</span>
+                  <h2>Fund</h2>
+                </div>
+                <div class="modal-body">
+		<input type="hidden" id="project_id" value="<%= @project.id %>">
 	
-      	   <input type="number" id="fund_input" class="form-control"></div>
-	<div class="col-sm-2">
-      	   <button type="button" class="btn btn-success" id="fund_btn" onclick="Fundsck();" value="<=%@user_id %>">Fund</button></div>
-     </div>
+                  <%= form_for Fund.new do |f| %>
+        
+                    <%= f.hidden_field :user_id, :value => current_user.id %>
+ 		    <%= f.hidden_field :project_id, :value => @project.id %>
+		    <%= f.hidden_field :promise_id, :value => nil %>
+		    
+
+
+		   <div class="row">
+			<div class="col-sm-6">
+			    <h3>Enter your amount: </h3>
+		            <%= f.number_field :amount%> 
+			     
+			</div>
+			</div>
+                    </div>
+                    <div class="modal-footer">
+                      <%= f.submit "Fund", class: "btn btn-primary"%>
+                  <% end %>
+        </div>
+        <div class="modal-footer">
+          <h3></h3>
+        </div>
+        </div>
+
+        </div>
+
+      <% end %>
+      
+    </p>
+      	   
+	
 	<br>
     <div class="row">
     	<div class="col-sm-4">
-     		 <button type="button" class="btn btn-success" id="buy_btn" onclick="Buy();" value="<=%@user_id %>">Buy Promise</button>
-     		 <button type="button" class="btn btn-primary" id="wish_btn" onclick="Like();" value="<=%@user_id %>">Add to Wishlist</button>
+     		 
+     		 <button type="button" class="btn btn-primary" id="wish_btn"  value="<=%@user_id %>">Add to Wishlist</button>
     </div>
     </div>
     
@@ -121,7 +167,7 @@
     </div>
 
 
-  <input type="hidden" id="project_id" value="<%= @project.id %>">
+  
 
 <% end %>
 </div>

@@ -1,4 +1,7 @@
 <p id="notice"><%= notice %></p>
+<div style="width:100; height:100; background-color:lightpink; padding-top: 0px">
+  <h1 style="font-size:50px; text-align:left">Funding</h1>
+</div>
 
 <p>
   <strong>State:</strong>
@@ -7,16 +10,40 @@
 
 <p>
   <strong>User:</strong>
-  <%= @fund.user %>
+<% if @fund.user != nil %>
+	<td><%= @fund.user.name %></td>
+<%end%>
+
+  
 </p>
 
 <p>
   <strong>Promise:</strong>
-  <%= @fund.promise %>
+  <% if @fund.promise != nil %>
+	<td><%= @fund.promise.description %></td>
+  <% else %>
+	<td> Funded with money </td>
+<%end%>
+
 </p>
+
 <p>
-  <strong>Promise:</strong>
-  <%= @fund.project %>
+  <strong>Project:</strong>
+  <% if @fund.promise != nil %>
+	<td><%= @fund.promise.project.title %></td>
+  <% else %>
+	<td><%= link_to @fund.project_id , project_path(@fund.project_id)%> </td>
+<%end%>
+
+</p>
+
+<p>
+  <strong>Amount:</strong>
+   <% if @fund.promise != nil %>
+  	<%= @fund.promise.amount %>
+<%else%>
+	<%= @fund.amount %>
+<%end%>
 </p>
 
 <%= link_to 'Edit', edit_fund_path(@fund) %> |
