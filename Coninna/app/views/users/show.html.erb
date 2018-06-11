@@ -26,6 +26,11 @@
           <p><strong>Credit Card:</strong> <%= @user.credit_card_info %></p>
           <p><strong>Address:</strong> <%= @user.address %></p>
           <p><strong>Country:</strong> <%= @user.country %></p>
+	   
+	  <% if @user.admin %>
+	     <p><strong>Role: </strong>Yay an admin!
+	     <%end%>
+	</p>
         </div>
 
 

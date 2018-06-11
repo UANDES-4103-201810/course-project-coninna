@@ -11,17 +11,26 @@
 <div style="padding-left: 40px">
   <h3 style="color:forestgreen; font-size:30px">Outstanding Projects</h3>
 </div>
-<div class="row">
+
   <% @projects.each do |p| %>
     <% if p.outstanding %>
-      <div class="col-sm-4">
+    <div class="row">
+      <div class="col-sm-3">
         <% if p.photo.exists? %>
           <%= image_tag p.photo.url(:medium), class:'img-thumbnail' %>
         <%end%>
-        <strong>Title:</strong>
-        <%= p.title %>
-        <strong>Description:</strong>
-        <%= p.description %>
+		<br>
+        	<strong>Title:</strong>
+        	<%= link_to p.title , project_path(p.id)%>
+		<br>
+		<strong>Description:</strong>
+		<%= p.description %>
+		<br>
+		<strong>Progress:</strong>
+		<div class="progress">
+  		<div class="progress-bar" style="width:<%= (p.actual_money.to_f/p.goal_amount.to_f )*100%>% " role="progressbar" aria-valuenow="<%= ((p.actual_money.to_f/p.goal_amount.to_f )*100).to_int %>" aria-valuemin="0" aria-valuemax="<%=p.goal_amount%>"><%= ((p.actual_money.to_f/p.goal_amount.to_f )*100).to_int%>%</div>
+	 </div>
+	</div>
       </div>
     <%end%>
  <%end%>

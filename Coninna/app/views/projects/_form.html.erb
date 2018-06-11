@@ -52,7 +52,7 @@
   <% if user_signed_in? && current_user.admin %>
     <div class="field">
       <%= label_tag :outstanding %>
-	    <%= radio_button_tag( 'outstanding' , true) %>
+	    <%= f.check_box :outstanding %>
     </div>
     <%end%>
   <div class="actions">

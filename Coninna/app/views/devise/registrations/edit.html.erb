@@ -68,7 +68,7 @@
 <% if user_signed_in? && current_user.admin %>
 	  <div class="field">
 	  <%= label_tag :admin %>
-	  <%= radio_button_tag('admin', 'admin') %> Admin
+	  <%= f.check_box :admin %>
 	</div>
   <%end%>
   <div class="actions">
