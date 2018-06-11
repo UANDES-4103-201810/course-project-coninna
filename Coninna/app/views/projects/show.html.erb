@@ -47,7 +47,7 @@
                       <strong> Delivery date: </strong><%= promise.delivery_date %></p>
                     </div>
                     <div class="modal-footer">
-                      <%= f.submit "Buy", class: "btn btn-primary", 'onclick' => UserMailer.with(user: @user).welcome_email.deliver_now%>
+                      <%= f.submit "Buy", class: "btn btn-primary"%>
                   <% end %>
         </div>
         <div class="modal-footer">
@@ -138,7 +138,7 @@
 			</div>
                     </div>
                     <div class="modal-footer">
-                     <%= f.submit "Fund", class: "btn btn-primary", 'onclick' => UserMailer.with(user: @user).welcome_email.deliver_now%>
+                     <%= f.submit "Fund", class: "btn btn-primary"%>
                   <% end %>
         </div>
         <div class="modal-footer">

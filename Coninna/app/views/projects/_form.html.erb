@@ -49,6 +49,21 @@
     <%= f.label :photo %>
     <%= f.file_field :photo %>
   </div>
+ 
+ <div class="field">
+	<h4>Add a promise</h4>
+	<%= f.fields_for :promises do |p| %>
+      <li>
+        <%= p.label :description %>
+        <%= p.text_field :description %>
+ 
+        <%= p.label :amount %>
+        <%= p.number_field :amount %>
+        <%= p.label :delivery_date %>
+        <%= p.date_select :delivery_date, :start_year => 1920, :end_year => 2050%>
+        
+      </li>
+    <% end %>
   <% if user_signed_in? && current_user.admin %>
     <div class="field">
       <%= label_tag :outstanding %>

@@ -27,6 +27,7 @@ class ProjectsController < ApplicationController
   # GET /projects/new
   def new
     @project = Project.new
+    1.times { @project.promises.build }
   end
 
   # GET /projects/1/edit
@@ -87,6 +88,6 @@ class ProjectsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def project_params
-      params.require(:project).permit(:description, :days_to_go, :goal_amount, :actual_money, :outstanding, :title, :descriptive_page, :photo, category_ids: [])
+      params.require(:project).permit(:description, :days_to_go, :goal_amount, :actual_money, :outstanding, :title, :descriptive_page, :photo, category_ids: [],  promises_attributes: [ :description, :amount, :delivery_date])
     end
 end

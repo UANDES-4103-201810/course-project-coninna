@@ -5,6 +5,7 @@ class Project < ApplicationRecord
 	has_many :categories, :through => :category_projects
 
 	has_many :show_my_wishlist
+	accepts_nested_attributes_for :promises, allow_destroy: true
 
 	has_attached_file :photo, styles: { medium:"300x300>"}
 
