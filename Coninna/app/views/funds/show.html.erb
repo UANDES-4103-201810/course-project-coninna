@@ -11,18 +11,18 @@
 <p>
   <strong>User:</strong>
 <% if @fund.user != nil %>
-	<td><%= @fund.user.name %></td>
+  <td><%= @fund.user.name %></td>
 <%end%>
 
-  
+
 </p>
 
 <p>
   <strong>Promise:</strong>
   <% if @fund.promise != nil %>
-	<td><%= @fund.promise.description %></td>
+  <td><%= @fund.promise.description %></td>
   <% else %>
-	<td> Funded with money </td>
+  <td> Funded with money </td>
 <%end%>
 
 </p>
@@ -30,9 +30,9 @@
 <p>
   <strong>Project:</strong>
   <% if @fund.promise != nil %>
-	<td><%= @fund.promise.project.title %></td>
+  <td><%= @fund.promise.project.title %></td>
   <% else %>
-	<td><%= link_to @fund.project_id , project_path(@fund.project_id)%> </td>
+  <td><%= link_to @fund.project_id , project_path(@fund.project_id)%> </td>
 <%end%>
 
 </p>
@@ -40,9 +40,9 @@
 <p>
   <strong>Amount:</strong>
    <% if @fund.promise != nil %>
-  	<%= @fund.promise.amount %>
+    <%= @fund.promise.amount %>
 <%else%>
-	<%= @fund.amount %>
+  <%= @fund.amount %>
 <%end%>
 </p>
 

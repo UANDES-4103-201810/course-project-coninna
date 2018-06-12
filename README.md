@@ -1,6 +1,14 @@
 Carolina Assadi
 Constanza Marchant
 What we achieved:
+(A) System Access: The user can login via Facebook.
+(B) Platform Feedback: The page shows feedback messages.
+(C) User Profile: Following the assignment 1.1 the description view shows the content using markdown.
+(D) Funding: Using MAILERS the user recieves a mail with the funding confirmation.
+(E) Searching: A search can be made by category and key word in the project title or the description.
+(F) Authorization: Though we did not used the cancan gem, if a user is not qualified to enter a specific page it does not enter.
+
+What we achieved on the previous assignment:
 RESOURCES/FORMS
 (A) Registered Users:
 1. The user can edit his/her own profile and other profiles.
@@ -24,7 +32,7 @@ FILE CONTROLLER
 EXTRA FEATURES
 (A) The application shows feedback properly for every task completed.
 (B) The option to mark as outstanding is available, however we have not been able to show the outstanding project in the main page.
-What we didn't achieve:
+What we didn't achieve on the previous assignment:
 VIEWS
 (A) The 'FUND' button isn't working, so there is nothing to show in the fund view.
 FILE CONTROLLER
