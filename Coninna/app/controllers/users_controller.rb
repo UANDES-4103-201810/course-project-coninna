@@ -11,6 +11,7 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     @user = User.find(params[:id])
+    @fund= Fund.where(:email_confirmed => true)
   end
 
   def show_my_wishlist

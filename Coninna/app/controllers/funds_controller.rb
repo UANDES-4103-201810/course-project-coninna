@@ -1,5 +1,8 @@
 class FundsController < ApplicationController
   before_action :set_fund, only: [:show, :edit, :update, :destroy]
+  before_validation(on::create) do
+    :confirmation_token
+  end
 
   # GET /funds
   # GET /funds.json
@@ -26,15 +29,39 @@ class FundsController < ApplicationController
   # POST /funds.json
   def create
     @fund = Fund.new(fund_params)
+    if @fund.save
+      @fund.confirm_token
+      @fund.save(validate: false)
+      FundMailer.funding_confirmation(current_user, @fund).deliver_now
+      flash[:success] ="Please confirm your email address to continue"
+      redirect_to root_url
+    else
+      flash[:error] = "Ooops, something went wrong!"
+      render 'new'
+    end
 
     respond_to do |format|
       if @fund.save
+        FundMailer.deliver_funding_confirmation
         format.html { redirect_to @fund, notice: 'Fund was successfully created.' }
         format.json { render :show, status: :created, location: @fund }
       else
         format.html { render :new }
         format.json { render json: @fund.errors, status: :unprocessable_entity }
       end
+    end
+
+
+  end
+  def confirm_fund
+    user = Fund.find_by_confirm_token(params[:token])
+    if user
+      user.validate_email
+      user.save(validate: false)
+      redirect_to user
+    else
+      flash[:error] = "Sorry, user does not exist"
+      redirect_to root_url
     end
   end
 
@@ -62,7 +89,7 @@ class FundsController < ApplicationController
     end
   end
 
-  private
+
     # Use callbacks to share common setup or constraints between actions.
     def set_fund
       @fund = Fund.find(params[:id])

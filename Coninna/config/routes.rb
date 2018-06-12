@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   resources :wishlists
-  resources :funds
+  resources :funds do
+    member do
+      get :confirm_email
+    end
+  end
   resources :categories
   devise_for :users, :controllers => {:registrations => "users/registrations", :omniauth_callbacks => 'callbacks'}
   resources :users, path: :people

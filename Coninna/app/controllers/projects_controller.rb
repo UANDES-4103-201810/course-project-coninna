@@ -17,7 +17,7 @@ class ProjectsController < ApplicationController
 
 	@project = Project.find(params[:id])
 	@promises = Promise.all
-	
+	@actual = Fund.where(:project_id => @project.id, :email_confirmed => true).sum(:amount)
   end
 
   def show_my

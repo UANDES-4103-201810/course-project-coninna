@@ -66,7 +66,8 @@
 
 	<p>
 	  <strong>Description:</strong>
-	  <%= raw Markdown.new(@project.description).to_html %> 
+	  <%#= raw Markdown.new(@project.description).to_html %>
+    <%= markdown(@project.description) %>
 	</p>
 
 	<p>
@@ -119,34 +120,34 @@
                   <h2>Fund</h2>
                 </div>
                 <div class="modal-body">
-		<input type="hidden" id="project_id" value="<%= @project.id %>">
+		              <input type="hidden" id="project_id" value="<%= @project.id %>">
 	
                   <%= form_for Fund.new do |f| %>
         
                     <%= f.hidden_field :user_id, :value => current_user.id %>
- 		    <%= f.hidden_field :project_id, :value => @project.id %>
-		    <%= f.hidden_field :promise_id, :value => nil %>
+                    <%= f.hidden_field :project_id, :value => @project.id %>
+                    <%= f.hidden_field :promise_id, :value => nil %>
 		    
 
 
-		   <div class="row">
-			<div class="col-sm-6">
-			    <h3>Enter your amount: </h3>
-		            <%= f.number_field :amount%> 
-			     
-			</div>
-			</div>
-                    </div>
-                    <div class="modal-footer">
+		                   <div class="row">
+                        <div class="col-sm-6">
+                            <h3>Enter your amount: </h3>
+                                  <%= f.number_field :amount%>
+
+                        </div>
+                       </div>
+                </div>
+                   <div class="modal-footer">
                      <%= f.submit "Fund", class: "btn btn-primary"%>
                   <% end %>
-        </div>
-        <div class="modal-footer">
-          <h3></h3>
-        </div>
-        </div>
+                  </div>
+                <div class="modal-footer">
+                  <h3></h3>
+                </div>
+                </div>
 
-        </div>
+            </div>
 
       <% end %>
       
