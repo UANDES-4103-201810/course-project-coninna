@@ -36,7 +36,7 @@
 
         <div class="col-sm-6">
           <% if user_signed_in? && current_user == @user %>
-            <%= link_to 'Edit', edit_user_registration_path(@user) %>
+            <%= link_to 'Edit', edit_user_path(@user) %>
           <% end %>
     <% if user_signed_in? %>
       <% if current_user.admin%>
