@@ -50,13 +50,13 @@
     <%= f.file_field :photo %>
   </div>
  
- <div class="field">
+ <div class="field" id="addpromise" >
 	<h4>Add a promise</h4>
 	<%= f.fields_for :promises do |p| %>
       <li>
         <%= p.label :description %>
-        <%= p.text_field :description %>
- 
+	 <%= p.text_field :description %>
+
         <%= p.label :amount %>
         <%= p.number_field :amount %>
         <%= p.label :delivery_date %>
@@ -64,10 +64,15 @@
         
       </li>
     <% end %>
+ </div>
   <% if user_signed_in? && current_user.admin %>
     <div class="field">
       <%= label_tag :outstanding %>
 	    <%= f.check_box :outstanding %>
+    </div>
+    <div class="field">
+      <%= label_tag :approves %>
+	    <%= f.check_box :approves %>
     </div>
     <%end%>
   <div class="actions">

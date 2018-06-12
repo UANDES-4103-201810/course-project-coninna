@@ -9,7 +9,8 @@
     <tr>
       <th>State</th>
       <th>User</th>
-      <th>Promise</th>
+      <th>Project</th>
+      <th>Amount</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -19,9 +20,15 @@
       <tr>
         <td><%= fund.state %></td>
         <td><%= fund.user.name %></td>
-        <td><%= fund.promise %></td>
-        <% if fund.promise != nil %>
-         <td><%= fund.promise.project.title %></td>
+      <% if fund.promise != nil %>
+		<td><%= fund.promise.project.title %></td>
+       <% else %>
+		<td><%= link_to fund.project_id , project_path(fund.project_id)%> </td>
+	<%end%>
+	<% if fund.promise != nil %>
+         <td><%= fund.promise.amount %></td>
+	<%else%>
+		<td><%= fund.amount %></td>
         <%end%>
         <td><%= link_to 'Show', fund %></td>
         <td><%= link_to 'Edit', edit_fund_path(fund) %></td>
@@ -33,4 +40,3 @@
 
 <br>
 
-<%= link_to 'New Fund', new_fund_path %>

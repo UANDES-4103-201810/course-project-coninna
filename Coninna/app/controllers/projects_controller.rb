@@ -23,7 +23,9 @@ class ProjectsController < ApplicationController
   def show_my
     @projects = current_user.projects
   end
-
+def pending
+    @projects = Project.all
+  end
   # GET /projects/new
   def new
     @project = Project.new
@@ -88,6 +90,6 @@ class ProjectsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def project_params
-      params.require(:project).permit(:description, :days_to_go, :goal_amount, :actual_money, :outstanding, :title, :descriptive_page, :photo, category_ids: [],  promises_attributes: [ :description, :amount, :delivery_date])
+      params.require(:project).permit(:description, :days_to_go, :goal_amount, :approves, :actual_money, :outstanding, :title, :descriptive_page, :photo, category_ids: [],  promises_attributes: [ :description, :amount, :delivery_date])
     end
 end

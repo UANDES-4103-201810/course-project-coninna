@@ -29,6 +29,13 @@
         <div class="col-sm-6">
           <p>Days to go: <%= project.days_to_go %></p>
         </div>
+	<div class="col-sm-6">
+          <% if project.approves %>
+          <p>Approved: Yes</p>
+	<% else%>
+		<p>Approved: No</p>
+	<%end%>
+        </div>
         <div class="col-sm-6">
           <% if user_signed_in? %>
             <div><%= link_to "New Promise", new_promise_path(:project => project.id) %> </div>

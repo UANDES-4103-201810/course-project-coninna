@@ -19,10 +19,13 @@ class Project < ApplicationRecord
 	validates_attachment_content_type :photo, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
   def self.search(search)
     if search
-      where('title LIKE ?', "%#{search}%")
+      where("title LIKE ? or description LIKE ?", "%#{search}%", "%#{search}%") 
+      
     else
       all
     end
+    
   end
+ 
 
 end

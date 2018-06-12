@@ -10,6 +10,7 @@ class FundsController < ApplicationController
   # GET /funds/1
   # GET /funds/1.json
   def show
+	 @funds = Fund.all
   end
 
   # GET /funds/new
