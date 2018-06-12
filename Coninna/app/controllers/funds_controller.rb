@@ -1,8 +1,6 @@
 class FundsController < ApplicationController
   before_action :set_fund, only: [:show, :edit, :update, :destroy]
-  before_validation(on::create) do
-    :confirmation_token
-  end
+
 
   # GET /funds
   # GET /funds.json
@@ -29,15 +27,11 @@ class FundsController < ApplicationController
   # POST /funds.json
   def create
     @fund = Fund.new(fund_params)
-    if @fund.save
-      @fund.confirm_token
-      @fund.save(validate: false)
-      FundMailer.with( user: current_user, fund: @fund).funding_confirmation.deliver_later
-   
 
     respond_to do |format|
       if @fund.save
-        FundMailer.deliver_funding_confirmation
+        MoneyMailer.funding_confirmation(current_user, @fund).deliver_now
+        Fund.find(@fund.id).update(:state => true)
         format.html { redirect_to @fund, notice: 'Fund was successfully created.' }
         format.json { render :show, status: :created, location: @fund }
       else
