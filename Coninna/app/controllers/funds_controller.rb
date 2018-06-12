@@ -32,13 +32,8 @@ class FundsController < ApplicationController
     if @fund.save
       @fund.confirm_token
       @fund.save(validate: false)
-      FundMailer.funding_confirmation(current_user, @fund).deliver_now
-      flash[:success] ="Please confirm your email address to continue"
-      redirect_to root_url
-    else
-      flash[:error] = "Ooops, something went wrong!"
-      render 'new'
-    end
+      FundMailer.with( user: current_user, fund: @fund).funding_confirmation.deliver_later
+   
 
     respond_to do |format|
       if @fund.save
