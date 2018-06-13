@@ -9,31 +9,28 @@
     <tr>
       <th>Project</th>
       <th colspan="3"></th>
+   
     </tr>
   </thead>
 
   <tbody>
-    <tr>
-      <td>Turtles</td>
-    </tr>
-    <tr> <td>Penguins</td></tr>
-
-    <tr><td>Polar Bear</td></tr>
-    <tr><td>Mickey Mouse</td></tr>
-    <tr><td>Qoukka</td></tr>
+   
 
 
     <% @wishlists.each do |wishlist| %>
+    <% if current_user == wishlist.user  %>
       <tr>
-        <td><%= wishlist.project %></td>
-        <td><%= link_to 'Show', wishlist %></td>
-        <td><%= link_to 'Edit', edit_wishlist_path(wishlist) %></td>
-        <td><%= link_to 'Destroy', wishlist, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to wishlist.project.title, project_path(wishlist.project) %></td>
+	<td colspan="3"></td>
+	
+        
+        
+        <td><%= link_to 'Destroy', wishlist, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></td>
       </tr>
+    <%end%>
     <% end %>
   </tbody>
 </table>
 
 <br>
 
-<%= link_to 'New Wishlist', new_wishlist_path %>

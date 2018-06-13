@@ -7,33 +7,39 @@
     <thead>
       <tr>
         <th>State</th>
-        <th>User</th>
+	<th colspan="4"></th>
+        
         <th>Project</th>
+	<th colspan="4"></th>
         <th>Amount</th>
-        <th colspan="3"></th>
+        <th colspan="4"></th>
       </tr>
     </thead>
 
     <tbody>
       <% @funds.each do |fund| %>
-        <% if fund.state %>
-        <tr>
-          <td><%= fund.state %></td>
-          <td><%= fund.user.name %></td>
-        <% if fund.promise != nil %>
-      <td><%= fund.promise.project.title %></td>
-    <%end%>
-    <% if fund.promise != nil %>
-           <td><%= fund.promise.amount %></td>
-    <%else%>
-      <td><%= fund.amount %></td>
-          <%end%>
-          <td><%= link_to 'Show', fund %></td>
-          <td><%= link_to 'Edit', edit_fund_path(fund) %></td>
-          <td><%= link_to 'Destroy', fund, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        </tr>
-      <% end %>
-      <%end%>
+	<% if fund.user == current_user%>
+		<% if fund.state %>
+		<tr>
+		  <td>Funded!</td>
+		
+		<th colspan="4"></th>
+	      	
+	      <td><%= link_to fund.project_id, project_path(fund.project_id) %></td>
+		
+	    
+	 <th colspan="4"></th>
+	    <% if fund.promise != nil %>
+		   <td><%= fund.promise.amount %></td>
+	    <%else%>
+	      <td><%= fund.amount %></td>
+		  <%end%>
+		  
+		
+		</tr>
+	      <% end %>
+	      <%end%>
+	<%end%>
     </tbody>
   </table>
 

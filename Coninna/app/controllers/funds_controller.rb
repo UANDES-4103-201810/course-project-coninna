@@ -6,6 +6,7 @@ class FundsController < ApplicationController
   # GET /funds.json
   def index
     @funds = Fund.all
+    	
   end
 
   # GET /funds/1

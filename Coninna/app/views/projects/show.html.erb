@@ -5,9 +5,11 @@
 <div class="container-fluid">
 	<p>
 	  <% if @project.photo.exists? %>
-	    <%= image_tag @project.photo.url(:medium), class:'img-thumbnail' %></p>
+	    
 	
-	 <p> <%= link_to "Download Photo", download_path(id:@project) %></p>
+	 <p> <%= link_to (image_tag( @project.photo.url(:medium), class:'img-thumbnail' )), download_path(id:@project), target:'_blank' %></p>
+
+	
 	<%end%>
 	<p>
 	  <strong>Category:</strong>
@@ -99,8 +101,8 @@
 
 <% if user_signed_in? %>
   <% if @project.user == current_user || current_user.admin%>
-    <%= link_to 'Edit', edit_project_path(@project) %>
-    <%= link_to 'Destroy', @project, method: :delete, data: {confirm: 'Are you sure?'} %>
+    <%= link_to 'Edit', edit_project_path(@project) , class:"btn btn-default"%>
+    <%= link_to 'Destroy', @project, method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-danger" %>
 
 
   <% else %>
@@ -132,9 +134,10 @@
 
 		                   <div class="row">
                         <div class="col-sm-6">
+
                             <h3>Enter your amount: </h3>
                                   <%= f.number_field :amount%>
-
+			   
                         </div>
                        </div>
                 </div>
@@ -158,7 +161,48 @@
     <div class="row">
     	<div class="col-sm-4">
      		 
-     		 <button type="button" class="btn btn-primary" id="wish_btn"  value="<=%@user_id %>">Add to Wishlist</button>
+  
+		<!-- Trigger/Open The Modal -->
+            <button id="Wish" class= "btn btn-primary"data-toggle="modal" data-target="#wish<%=@project.id%>">Add To Wishlist</button>
+
+            <!-- The Modal -->
+            <div id="wish<%=@project.id%>" class="modal">
+
+              <!-- Modal content -->
+              <div class="modal-content">
+                <div class="modal-header">
+                  <span class="close">&times;</span>
+                  <h2>Add to Wishlist</h2>
+                </div>
+                <div class="modal-body">
+		     <input type="hidden" id="project_id" value="<%= @project.id %>">
+		     <p> You are adding <%=@project.title%> to your wishlist! </p>
+	
+                  <%= form_for Wishlist.new do |w| %>
+        
+                    <%= w.hidden_field :user_id, :value => current_user.id %>
+                    <%= w.hidden_field :project_id, :value => @project.id %>
+		    
+                </div>
+                   <div class="modal-footer">
+                     <%= w.submit "Add", class: "btn btn-primary"%>
+                  <% end %>
+                  </div>
+                <div class="modal-footer">
+                  <h3></h3>
+                </div>
+                </div>
+
+            </div>
+
+      <% end %>
+      
+
+
+
+
+
+
     </div>
     </div>
     
@@ -170,7 +214,6 @@
 
   
 
-<% end %>
 </div>
-<%= link_to 'Back', projects_path %>
+
 

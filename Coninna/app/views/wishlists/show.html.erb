@@ -1,14 +1,32 @@
 <p id="notice"><%= notice %></p>
+<div style="width:100; height:100; background-color:lightpink; padding-top: 0px">
+  <h1 style="font-size:50px; text-align:left">Wishlist</h1>
+</div>
 
-<p>
-  <strong>User:</strong>
-  <%= @wishlist.user %>
-</p>
+<table>
+  <thead>
+    <tr>
+      <th>Project</th>
+      <th colspan="3"></th>
+      
+    </tr>
+  </thead>
 
-<p>
-  <strong>Project:</strong>
-  <%= @wishlist.project %>
-</p>
+  <tbody>
 
-<%= link_to 'Edit', edit_wishlist_path(@wishlist) %> |
-<%= link_to 'Back', wishlists_path %>
+
+
+
+  
+ <td> <%= link_to @wishlist.project.title, project_path(@wishlist.project.id) %></td>
+
+<td colspan="3"></td>
+<td><%= link_to 'Destroy', @wishlist, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
+
+</tbody>
+</thead>
+</table>
+
+
+

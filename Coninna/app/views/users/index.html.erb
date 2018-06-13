@@ -31,8 +31,8 @@
 	<div class= "col-sm-2" style="padding-top: 40px">
 	  <% if current_user.admin%>
 		
-  			<%= link_to 'Edit', edit_user_path(user) %>
-  			<%= link_to 'Destroy', user, method: :delete, data: {confirm: 'Are you sure?'} %>
+  			<%= link_to 'Edit', edit_user_path(user), class:"btn btn-default" %>
+  			<%= link_to 'Destroy', user, method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-danger" %>
 	 	
 	  <% end %>
 	</div>

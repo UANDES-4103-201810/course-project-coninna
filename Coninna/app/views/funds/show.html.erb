@@ -5,7 +5,11 @@
 
 <p>
   <strong>State:</strong>
-  <%= @fund.state %>
+  <% if @fund.state %>
+      <td>Funded!</td>
+  <%else%>
+	<td>Waiting</td>
+  <%end%>
 </p>
 
 <p>

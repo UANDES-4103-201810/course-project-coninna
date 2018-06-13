@@ -56,8 +56,8 @@
 		  <div class="col-sm-6">
 		    <p>Goal: $<%=project.goal_amount %></p>
 		  </div>
-		  <div class="col-sm-6">
-		    <p>Actual Money: $<%=project.actual_money %></p>
+		  <div class="col-sm-7">
+		    <p>Actual Money: $<%=project.actual_money%></p>
 		  </div>
 		  <div class="col-sm-6">
 		    <p>Days to go: <%= project.days_to_go%></p>
@@ -68,13 +68,45 @@
 	<br>
 		  <% if user_signed_in? && !current_user.admin %>
 		  <div>
-		    <button type="button" class="btn btn-primary">Add to Wishlist</button>
+		    <!-- Trigger/Open The Modal -->
+            <button id="myBtn" class= "btn btn-success"data-toggle="modal" data-target="#myModal<%=project.id %>">Add To Wishlist</button>
+
+            <!-- The Modal -->
+            <div id="myModal<%=project.id %>" class="modal">
+
+              <!-- Modal content -->
+              <div class="modal-content">
+                <div class="modal-header">
+                  <span class="close">&times;</span>
+                  <h2>Add to Wishlist</h2>
+                </div>
+                <div class="modal-body">
+		     
+		     <a> You are adding <%=project.title%> to your wishlist! </a>
+	
+                  <%= form_for Wishlist.new do |f| %>
+        
+                    <%= f.hidden_field :user_id, :value => current_user.id %>
+                    <%= f.hidden_field :project_id, :value => project.id %>
+		    
+                </div>
+                   <div class="modal-footer">
+                     <%= f.submit "Add", class: "btn btn-primary"%>
+                  <% end %>
+                  </div>
+                <div class="modal-footer">
+                  <h3></h3>
+                </div>
+                </div>
+
+            </div>
+
 		  </div>
 		  
 		  <% end %>
 		  <% if user_signed_in? && current_user.admin%>
-	  		<%= link_to 'Edit', edit_project_path(project) %>
-		        <%= link_to 'Destroy', project, method: :delete, data: {confirm: 'Are you sure?'} %>
+	  		<%= link_to 'Edit', edit_project_path(project), class:"btn btn-default" %>
+		        <%= link_to 'Destroy', project, method: :delete, data: {confirm: 'Are you sure?'}, class:"btn btn-danger" %>
 		 
 		  <% end %>
 		  <br>

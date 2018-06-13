@@ -29,15 +29,20 @@ def pending
   # GET /projects/new
   def new
     @project = Project.new
-    1.times { @project.promises.build }
+    
   end
 
   # GET /projects/1/edit
   def edit
   end
   def download_file
+    @photo= Project.find(params[:id])
 
-    send_file @project.photo.path
+    send_file @photo.photo.path,
+    :filename => @photo.photo_file_name,
+    :type => @photo.photo_content_type,
+    :disposition => "attachment"
+    flash[:notice]= "Image downloaded"
   end
 
 
