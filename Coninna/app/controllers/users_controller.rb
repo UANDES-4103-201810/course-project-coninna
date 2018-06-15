@@ -19,7 +19,11 @@ class UsersController < ApplicationController
     @wishlist = current_user.wishlists
 
   end
+ def statistics
+    @projects = Project.all
 
+
+  end
   # GET /users/new
   def new
     @user = User.new

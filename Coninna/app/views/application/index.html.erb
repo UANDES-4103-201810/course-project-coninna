@@ -25,10 +25,7 @@
 		<strong>Description:</strong>
 		<%= p.description %>
 		<br>
-		<strong>Progress:</strong>
-		<div class="progress">
-  		<div class="progress-bar" style="width:<%= (p.actual_money.to_f/p.goal_amount.to_f )*100%>% " role="progressbar" aria-valuenow="<%= ((p.actual_money.to_f/p.goal_amount.to_f )*100).to_int %>" aria-valuemin="0" aria-valuemax="<%=p.goal_amount%>"><%= ((p.actual_money.to_f/p.goal_amount.to_f )*100).to_int%>%</div>
-	 </div>
+		
 	</div>
       
     <%end%>
