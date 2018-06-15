@@ -26,7 +26,7 @@
               <strong> Delivery date: </strong><%= promise.delivery_date %>
             <% if user_signed_in? && !current_user.admin %>
             <!-- Trigger/Open The Modal -->
-            <button id="myBtn" data-toggle="modal" data-target="#myModal<%=promise.id %>">Buy</button>
+            <button id="myBtn" data-toggle="modal" class= "btn btn-succes" data-target="#myModal<%=promise.id %>">Buy</button>
 
             <!-- The Modal -->
             <div id="myModal<%=promise.id %>" class="modal">
@@ -81,11 +81,11 @@
     <strong>Goal amount: $</strong>
     <%= @project.goal_amount %></p>
     <p><strong>Actual Money: $</strong>
-      <%= @project.actual_money %></p>
+      <%= @actual %></p>
 
         <div class="col-sm-2">
 	     <div class="progress">
-	  		<div class="progress-bar" style="width:<%= (@project.actual_money.to_f/@project.goal_amount.to_f )*100%>%" role="progressbar" aria-valuenow="<%= ((@project.actual_money.to_f/@project.goal_amount.to_f )*100).to_int%>; color:black" aria-valuemin="0" aria-valuemax="<%=@project.goal_amount%>"><%= ((@project.actual_money.to_f/@project.goal_amount.to_f )*100).to_int%>%</div>
+	  		<div class="progress-bar" style="width:<%= (@actual.to_f/@project.goal_amount.to_f )*100%>%" role="progressbar" aria-valuenow="<%= ((@actual.to_f/@project.goal_amount.to_f )*100).to_int%>; color:black" aria-valuemin="0" aria-valuemax="<%=@project.goal_amount%>"><%= ((@actual.to_f/@project.goal_amount.to_f )*100).to_int%>%</div>
 		 </div>
 </div>
 

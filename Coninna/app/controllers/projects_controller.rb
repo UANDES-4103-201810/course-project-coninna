@@ -5,6 +5,7 @@ class ProjectsController < ApplicationController
   # GET /projects.json
   def index
     @categories = Category.all
+  
     @projects = Project.search(params[:searchbox])
     respond_to do |format|
       format.html # index.html.erb
@@ -17,11 +18,12 @@ class ProjectsController < ApplicationController
 
 	@project = Project.find(params[:id])
 	@promises = Promise.all
-	@actual = Fund.where(:project_id => @project.id, :email_confirmed => true).sum(:amount)
+	@actual = Fund.where(:project_id => @project.id).sum(:amount)
   end
 
   def show_my
     @projects = current_user.projects
+    @actual = Fund.where(@projects).sum(:amount)
   end
 def pending
     @projects = Project.all
