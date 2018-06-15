@@ -4,7 +4,9 @@
 
 <table>
 
-
+<% if Project.where(approves:false).count %>
+  <h3 align="center" > Yay! No pending requests</h3>
+<%end%>
   <tbody>
  
     <% @projects.each do |project| %>
@@ -30,7 +32,10 @@
 	  		<div class="progress-bar" style="width:<%= (project.actual_money.to_f/project.goal_amount.to_f )*100%>% " role="progressbar" aria-valuenow="<%= ((project.actual_money.to_f/project.goal_amount.to_f )*100).to_int %>" aria-valuemin="0" aria-valuemax="<%=project.goal_amount%>"><%= ((project.actual_money.to_f/project.goal_amount.to_f )*100).to_int%>%</div>
 		 </div>
 	<br>
-		  
+
+		  <% if @project.where(@project.approves => false).count == 0 %>
+			<p> No pending requests <%=Project.where(project.approves => false).count %> </p>
+		<%end%>
 		  
 		  <% if user_signed_in? && current_user.admin%>
 	  		<%= link_to 'Edit', edit_project_path(project) %>

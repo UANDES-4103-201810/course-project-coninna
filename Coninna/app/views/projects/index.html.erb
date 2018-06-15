@@ -56,15 +56,11 @@
 		  <div class="col-sm-6">
 		    <p>Goal: $<%=project.goal_amount %></p>
 		  </div>
-		  <div class="col-sm-7">
-		    <p>Actual Money: $<%=project.actual_money%></p>
-		  </div>
+		  
 		  <div class="col-sm-6">
 		    <p>Days to go: <%= project.days_to_go%></p>
 		  </div>
-		  <div class="progress">
-	  		<div class="progress-bar" style="width:<%= (project.actual_money.to_f/project.goal_amount.to_f )*100%>% " role="progressbar" aria-valuenow="<%= ((project.actual_money.to_f/project.goal_amount.to_f )*100).to_int %>" aria-valuemin="0" aria-valuemax="<%=project.goal_amount%>"><%= ((project.actual_money.to_f/project.goal_amount.to_f )*100).to_int%>%</div>
-		 </div>
+		
 	<br>
 		  <% if user_signed_in? && !current_user.admin %>
 		  <div>
