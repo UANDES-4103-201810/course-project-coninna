@@ -132,6 +132,7 @@ GEM
       cocaine (~> 0.5.5)
       mime-types
       mimemagic (= 0.3.0)
+    pg (1.0.0)
     popper_js (1.12.9)
     rack (2.0.4)
     rack-test (0.6.3)
@@ -233,6 +234,7 @@ DEPENDENCIES
   omniauth
   omniauth-facebook
   paperclip (~> 4.3, >= 4.3.6)
+  pg
   rails (= 5.0.2)
   rails_bootstrap_navbar
   redcarpet
